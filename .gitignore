@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Dữ liệu gốc: không đưa vào git (chỉ có script tải). Dữ liệu sạch (data/clean/) được commit nếu nhỏ.
+data/raw/
+data/*.csv
+data/*.xlsx
+data/*.zip
+
+# Khác
+*.zip
+~$*
+.DS_Store
+Thumbs.db
+
+# Antigravity (báo cáo/mission của agent, không đưa lên git)
+anti-reports/
+anti-missions/

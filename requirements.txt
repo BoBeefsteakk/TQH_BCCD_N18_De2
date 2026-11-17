@@ -1,0 +1,11 @@
+# Đề cho phép: NumPy, Pandas, Matplotlib; thêm scikit-learn, mlxtend, statsmodels, NetworkX.
+# Ghim đúng phiên bản đã cài sạch và chạy test thật (17/11/2026, Python 3.12.10, Windows).
+# Thêm thư viện mới: báo Phi (và đề chỉ cho phép các thư viện trên).
+numpy==2.5.5
+pandas==3.1.1
+matplotlib==3.11.2
+scikit-learn==1.9.1
+mlxtend==0.25.0
+statsmodels==0.15.0
+networkx==3.7
+pytest==9.2.0

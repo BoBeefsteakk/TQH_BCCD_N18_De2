@@ -1,0 +1,40 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: pytest (SKIP được, ĐỎ không được)
+        run: python -m pytest -q
+      - name: kiểm file task
+        run: python scripts/tasks.py check
+      - name: tệp lớn (> 1 MB) và dữ liệu thô không được nằm trong git
+        run: |
+          big=$(git ls-files -z | xargs -0 -I{} sh -c 'test -f "{}" && [ $(wc -c < "{}") -gt 1048576 ] && echo "{}"' || true)
+          if [ -n "$big" ]; then echo "Tệp > 1 MB: $big"; exit 1; fi
+          if git ls-files | grep -E '^(data/raw/|\.venv/)'; then echo "Dữ liệu thô hoặc .venv bị track"; exit 1; fi
+      - name: mỗi commit của PR có mã task
+        if: github.event_name == 'pull_request'
+        run: |
+          bad=0
+          for sha in $(git rev-list --no-merges origin/${{ github.base_ref }}..HEAD); do
+            subj=$(git log -1 --format=%s "$sha")
+            if ! echo "$subj" | grep -Eq '^(T[0-9]{3}|LEAD) (feat|fix|test|docs|chore)\([a-z0-9_-]+\): .+'; then
+              echo "Sai mẫu commit: $sha  $subj"; bad=1
+            fi
+          done
+          exit $bad

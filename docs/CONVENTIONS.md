@@ -1,0 +1,34 @@
+# CONVENTIONS — quy ước chung (chỉ Phi sửa)
+
+Mục tiêu: ba người, ba AI vẫn cho ra cùng một định nghĩa, cùng một con số. Thông số số học ở `src/config.py`; file này giữ **định nghĩa và quy ước**. Thấy chỗ mơ hồ → ghi vào task, báo Phi, không tự chọn.
+
+## 1. Dữ liệu và nhãn
+- Nguồn: UCI Steel Industry Energy Consumption (35.040 dòng 15 phút, năm 2018, 11 cột; theo đề). Không có giá trị thiếu theo đề (`NOT VERIFIED` đến khi T001 kiểm).
+- Đích phân lớp: `Load_Type` (3 lớp). Đích hồi quy: `Usage_kWh`. Tên cột thật lấy từ tệp, sửa trong `src/config.py`.
+- Đề yêu cầu kiểm CO2 có gần như suy ra trực tiếp từ `Usage_kWh` trước khi dùng làm đầu vào. Nhóm kiểm thêm cả `Load_Type` có gần suy ra từ `Usage_kWh` hay không (`UNKNOWN`, T001). Kết quả kiểm ghi vào `docs/decisions/`; cột rò rỉ đưa vào `config.LEAKY_COLS`.
+- Dữ liệu sạch lưu `data/clean/steel_clean.csv`; dữ liệu gốc không vào git.
+
+## 2. Chia tập, rò rỉ
+- Chia theo **thời gian** (`config.SPLIT_MODE`, `TEST_FRACTION`): phần cuối làm tập kiểm tra. Đây là đề xuất của Phi, chờ chốt.
+- Mọi phép khớp (chuẩn hóa, PCA, chọn thuộc tính, rời rạc hóa bằng phân vị) khớp **chỉ trên tập huấn luyện**, rồi áp cho tập kiểm tra.
+- Kiểm định chéo phân tầng (`config.CV_FOLDS`) chỉ trên tập huấn luyện.
+- Ngẫu nhiên: mọi `random_state` và `rng` lấy từ `config.SEED`.
+
+## 3. Chỉ số
+- Phân lớp: accuracy, precision, recall, F1 **theo từng lớp** (không chỉ trung bình), ma trận nhầm lẫn; báo các cặp lớp bị nhầm nhiều nhất.
+- Hồi quy: MAE, RMSE, R².
+- Luật kết hợp: support, confidence, lift (ngưỡng ở config); diễn giải ≥ `config.MIN_RULES_DISCUSSED` luật.
+- Phân cụm: khuỷu tay (inertia) và silhouette để chọn k.
+- So sánh có và không giảm chiều trên cùng tập chia và cùng độ đo.
+
+## 4. Biểu đồ
+- Mỗi hình: tiêu đề, nhãn trục, đơn vị, một nhận xét (ghi trong `docs/trace_<tên>.md`). Tổng ≥ 8 hình thuộc ≥ 4 loại.
+- Hình: `results/figures/<khối>_<số>_<mô_tả>.png`; bảng: `results/tables/<khối>_<số>_<mô_tả>.csv`. Khối là chữ thường `b`…`g` theo đề (ví dụ `c_03_heatmap_gio_thu.png`). Số hình/bảng khớp số trong báo cáo.
+- Mỗi hình/bảng ghi một dòng vào `docs/trace_<tên>.md`: số hình/bảng | tệp | hàm hoặc ô notebook | mã task | nhận xét.
+- Mã quan trọng nằm trong `src/`; notebook chỉ gọi hàm trong `src/`, xóa output trước khi commit, đặt tên `notebooks/<tên>_*.ipynb` (tên: `phi`, `huan`, `viet`).
+- Mã tham khảo ngoài (sách, GitHub, Kaggle) ghi nguồn ngay tại chỗ bằng chú thích.
+
+## 5. Văn bản và báo cáo
+- Báo cáo viết trên Google Docs (không để trong git), A4, Times New Roman 13, giãn dòng 1,3, 20–30 trang không kể phụ lục. Số liệu chỉ lấy từ tệp trong `results/`. Dấu phẩy thập phân trong văn bản (0,875).
+- Tài liệu tham khảo: IEEE hoặc APA, nhất quán; ghi nguồn dữ liệu (UCI).
+- Phụ lục A–D theo mẫu của đề, bản làm việc ở `docs/PROJECT_RECORDS.md` (A, B, C) và `docs/TESTCASES.md` (D).
