@@ -28,17 +28,16 @@ Mỗi loại thông tin chỉ có MỘT chỗ:
 | Checklist theo phase (khớp rubric của đề) | `docs/CHECKLIST.md` | Chỉ Phi |
 | Task linh động | `tasks/Txxx-*.md` (+ `scripts/tasks.py`) | Phi tạo; người được giao cập nhật `status` và "Kết quả" |
 | Nhật ký quyết định | `docs/decisions/README.md` | Chỉ Phi |
-| Nhật ký dùng AI (tùy chọn, xem mục 8) | `docs/ai_usage_log.md` | Ai cũng được, chỉ thêm dòng |
 | Hồ sơ làm việc nhóm (phiếu đăng ký, kế hoạch, rủi ro, nhật ký tuần, tự đánh giá) | `docs/PROJECT_RECORDS.md` | Phi |
 | Luật cho AI | `TEAM.md`, `AGENTS.md` | Chỉ Phi |
 
 ## 3. File sở hữu (mỗi file một chủ)
 | Người | Được sửa |
 |---|---|
-| Phi | `src/config.py`, `src/data_prep.py`, `src/models.py`, `src/evaluate.py`, `run_all.py`, `data/download_data.py`, `docs/` (trừ file Huấn sở hữu, `trace_*.md`, `ai_usage_log.md`), `tasks/` (tạo task), `.github/`, `prompts/`, `scripts/`, `TEAM.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `requirements.txt`, `pytest.ini`, `.gitignore`, `.gitattributes` |
+| Phi | `src/config.py`, `src/data_prep.py`, `src/models.py`, `src/evaluate.py`, `run_all.py`, `data/download_data.py`, `docs/` (trừ file Huấn sở hữu, `trace_*.md`), `tasks/` (tạo task), `.github/`, `prompts/`, `scripts/`, `TEAM.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `requirements.txt`, `pytest.ini`, `.gitignore`, `.gitattributes` |
 | Huấn | `src/viz.py`, `docs/DATA_DICTIONARY.md`, `docs/TESTCASES.md`, `notebooks/huan_*` |
 | Việt | `src/assoc.py`, `src/clustering.py`, `src/reduce.py`, `notebooks/viet_*` |
-| Ai cũng được | file task của mình, `docs/trace_<tên>.md` của mình, `docs/ai_usage_log.md` (chỉ thêm dòng), `results/figures|tables/` (chỉ tệp do mã của mình sinh ra, tên theo `CONVENTIONS.md`), `tests/` của khối mình |
+| Ai cũng được | file task của mình, `docs/trace_<tên>.md` của mình, `results/figures|tables/` (chỉ tệp do mã của mình sinh ra, tên theo `CONVENTIONS.md`), `tests/` của khối mình |
 
 Cần sửa file của người khác → ghi vào task, nhắn chủ file. Không tự sửa. `tests/test_interfaces.py` là test dùng chung: chỉ Phi sửa, qua PR riêng.
 
@@ -80,11 +79,10 @@ python scripts\doctor.py
 - Sau khi Phi báo "đã merge", mọi người làm lại mục 4.
 
 ## 8. Dùng AI
-- **Câu của đề (nguyên văn):** "Được dùng để tra cứu, giải thích và gỡ lỗi, nhưng phải khai báo công cụ và mục đích sử dụng trong phụ lục. Mỗi thành viên phải giải thích được mã nguồn và kết quả thuộc phần mình khi vấn đáp."
-- **Việc AI viết code đề không nói rõ.** Nhóm đã quyết định cho phép AI viết code; việc đó nằm ngoài danh sách "tra cứu, giải thích, gỡ lỗi" của đề, nên rủi ro do nhóm tự chịu. Mỗi người tự chịu trách nhiệm về cách dùng AI và về việc khai báo ở phụ lục (nhóm không ép khai báo qua repo). `docs/ai_usage_log.md` là file mẫu tùy chọn để ai muốn thì ghi.
-- Báo cáo (Google Docs) do nhóm tự viết. AI chỉ góp ý và soát số liệu với tệp trong `results/` khi được nhờ.
-- Không bịa số liệu, bảng, hình không do mã của nhóm chạy ra. Không thêm tài liệu tham khảo chưa đọc.
-- Vấn đáp hỏi từng người về phần mình và phần chung: ai cũng cần giải thích được mã và con số của phần mình.
+- **Quyết định của trưởng nhóm (17/11/2026): bỏ tối đa ràng buộc AI.** AI được viết và sửa mã, viết tài liệu, hỗ trợ báo cáo. Không có nhật ký AI, không có bước kiểm hiểu bắt buộc trong repo.
+- **Điều đề nói (nguyên văn):** "Được dùng để tra cứu, giải thích và gỡ lỗi, nhưng phải khai báo công cụ và mục đích sử dụng trong phụ lục. Mỗi thành viên phải giải thích được mã nguồn và kết quả thuộc phần mình khi vấn đáp."
+- **Rủi ro nhóm tự chịu:** đề không nói rõ AI có được viết mã hay đoạn báo cáo không; danh sách "tra cứu, giải thích, gỡ lỗi" có thể bị giảng viên hiểu là danh sách đóng (`UNKNOWN`). Đề **vẫn yêu cầu khai báo công cụ AI ở phụ lục**; repo không giữ nhật ký nên mỗi người tự nhớ và tự khai, và khai đúng thực tế.
+- Giữ lại hai điều vì là điểm số, không phải luật AI: mọi con số và hình trong báo cáo phải do mã của nhóm chạy ra (đề yêu cầu), và mỗi người giải thích được phần mình khi vấn đáp (đề yêu cầu).
 
 ## 9. Điều CẤM khác (người và AI)
 - Tạo nhánh khác ngoài 4 nhánh; push thẳng `main`; push lên nhánh người khác.

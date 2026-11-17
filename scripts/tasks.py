@@ -34,7 +34,7 @@ OWNED = {
     "viet": ["src/assoc.py", "src/clustering.py", "src/reduce.py", "notebooks/viet_*"],
 }
 # Ai cũng được ({owner} thay bằng tên người làm).
-COMMON = ["docs/trace_{owner}.md", "docs/ai_usage_log.md", "results/figures", "results/figures/",
+COMMON = ["docs/trace_{owner}.md", "results/figures", "results/figures/",
           "results/tables", "results/tables/", "tests/", "tasks/"]
 # Không ai được sửa (test dùng chung).
 FORBIDDEN_ALL = ["tests/test_interfaces.py"]  # test dùng chung (giao diện hàm), chỉ Phi sửa qua PR riêng

@@ -74,7 +74,7 @@ Mục tiêu: ba người, ba AI vẫn cho ra cùng một con số. Quy tắc đ�
 Cần sửa file người khác: ghi vào task, nhắn chủ file.
 
 ### Dùng AI
-Xem `TEAM.md` mục 8. Đề cho phép "tra cứu, giải thích, gỡ lỗi" và yêu cầu khai báo ở phụ lục. Nhóm quyết định cho AI viết code (đề không nói rõ, rủi ro nhóm tự chịu); mỗi người tự chịu trách nhiệm về cách dùng và khai báo. Báo cáo (Google Docs) do nhóm tự viết.
+Xem `TEAM.md` mục 8. Trưởng nhóm đã bỏ tối đa ràng buộc AI: AI được viết mã và hỗ trợ báo cáo, repo không giữ nhật ký AI. Đề vẫn yêu cầu khai báo công cụ AI ở phụ lục (mỗi người tự khai đúng thực tế) và không nói rõ AI có được viết mã, báo cáo không; rủi ro nhóm tự chịu.
 
 ### Máy chặn, và quy ước thuần túy
 | Có test hoặc CI chặn | Chỉ là quy ước (cần người kiểm) |
@@ -89,7 +89,7 @@ Xem `TEAM.md` mục 8. Đề cho phép "tra cứu, giải thích, gỡ lỗi" v�
 - **UNKNOWN:** ngày giao đề, ngày thi, hạn nộp thật. Nhóm đã đăng ký đề với giảng viên chưa.
 - **UNKNOWN:** URL, kích thước, SHA-256 của dữ liệu; tên cột thật (T001).
 - **UNKNOWN:** CO2 và `Load_Type` có gần suy ra từ `Usage_kWh` không (T002).
-- **UNKNOWN:** Chương 5 (phân cụm) có tài liệu không; seaborn/plotly có được dùng không; AI viết code có được không.
+- **UNKNOWN:** Chương 5 (phân cụm) có tài liệu không; seaborn/plotly có được dùng không; giảng viên có chấp nhận AI viết mã và báo cáo không.
 
 ## Checklist theo phase
 Tóm tắt từ [`docs/CHECKLIST.md`](docs/CHECKLIST.md) (mã khớp Rubric R3, tổng 10,0). Task hằng ngày ở [`tasks/`](tasks/README.md).
@@ -109,7 +109,7 @@ src/        config, data_prep, reduce, viz, assoc, models, clustering, evaluate
 data/       download_data.py (data/raw/ không vào git; data/clean/ là dữ liệu sạch nộp kèm)
 notebooks/  huan_*, viet_*, phi_*  (xóa output trước khi commit)
 results/    figures/, tables/  (do mã sinh ra)
-docs/       CHECKLIST, CONVENTIONS, DE2, PHI/HUAN/VIET, PROJECT_RECORDS, TESTCASES, DATA_DICTIONARY, decisions/
+docs/       CHECKLIST, CONVENTIONS, DE2, BAOCAO_DAN_Y, PHI/HUAN/VIET, PROJECT_RECORDS, TESTCASES, DATA_DICTIONARY, decisions/
 tasks/      Txxx-*.md  (scripts/tasks.py)
 scripts/    doctor.py, tasks.py
 tests/      pytest

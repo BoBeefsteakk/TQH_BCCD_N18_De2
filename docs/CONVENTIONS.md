@@ -32,3 +32,15 @@ Mục tiêu: ba người, ba AI vẫn cho ra cùng một định nghĩa, cùng m
 - Báo cáo viết trên Google Docs (không để trong git), A4, Times New Roman 13, giãn dòng 1,3, 20–30 trang không kể phụ lục. Số liệu chỉ lấy từ tệp trong `results/`. Dấu phẩy thập phân trong văn bản (0,875).
 - Tài liệu tham khảo: IEEE hoặc APA, nhất quán; ghi nguồn dữ liệu (UCI).
 - Phụ lục A–D theo mẫu của đề, bản làm việc ở `docs/PROJECT_RECORDS.md` (A, B, C) và `docs/TESTCASES.md` (D).
+
+## 6. Quyết định đã chốt (17/11/2026; hằng số ở `src/config.py`, lý do ở `docs/decisions/README.md`)
+- **Hạt giống:** `SEED = 4759` cho mọi `random_state` và `rng`.
+- **Chia tập:** theo thời gian, 80% đầu năm là huấn luyện, 20% cuối năm là kiểm tra (`SPLIT_MODE`, `TEST_FRACTION`). Kiểm định chéo phân tầng 5 lần chỉ trên tập huấn luyện.
+- **Độ đo chính:** phân lớp là F1 macro; hồi quy là RMSE (kWh). Luôn báo thêm chỉ số từng lớp, MAE, R².
+- **Mô hình phân lớp (≥ 3, Chương 4):** cây quyết định, k-NN, hồi quy logistic. Hồi quy: tuyến tính và cây hồi quy. Lưới tham số ở `CLASSIFIER_GRID`, `REGRESSOR_GRID`; chọn trên train.
+- **Ngoại lai:** đánh dấu theo 1,5×IQR, không xóa.
+- **Lấy mẫu:** không (dùng đủ 35.040 dòng).
+- **Luật kết hợp:** khung giờ theo `HOUR_BIN_EDGES`; mức tiêu thụ và hệ số công suất chia 3 mức theo tam phân vị của train; ngưỡng ban đầu `MIN_SUPPORT`, `MIN_CONFIDENCE`, `MIN_LIFT`, chỉnh khi có dữ liệu và ghi vào `docs/decisions/`.
+- **Phân cụm:** k-means trên đặc trưng số đã chuẩn hóa (khớp trên train), `N_KMEANS_INIT` lần khởi tạo, chọn k bằng khuỷu tay và silhouette.
+- Loại **sự thật** chưa chốt: xem danh sách UNKNOWN trong `README.md` và `docs/BAOCAO_DAN_Y.md`.
+
