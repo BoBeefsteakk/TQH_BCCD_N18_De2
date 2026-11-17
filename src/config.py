@@ -76,3 +76,22 @@ MIN_FIGURES = 8  # đề, khối C: ít nhất 8 biểu đồ thuộc 4 loại t
 MIN_FIGURE_TYPES = 4
 MIN_RULES_DISCUSSED = 5  # đề, khối D
 CLEAN_DATA_NAME = "steel_clean.csv"  # dữ liệu đã làm sạch, lưu ở data/clean/
+
+# --- Quyết định đã chốt (17/11/2026; docs/decisions/, docs/CONVENTIONS.md mục 6) ---------------------
+PRIMARY_METRIC_CLS = "f1_macro"  # độ đo chính phân lớp: F1 trung bình macro (không để lớp lớn lấn át); báo thêm từng lớp
+PRIMARY_METRIC_REG = "rmse"  # độ đo chính hồi quy: RMSE (kWh); báo thêm MAE, R2
+OUTLIER_POLICY = "flag"  # ngoại lai 1,5xIQR: đánh dấu, KHÔNG xóa (phụ tải cao thật chính là chế độ Maximum_Load)
+SAMPLING = "none"  # 35.040 dòng là nhỏ, dùng toàn bộ, không lấy mẫu con
+HOUR_BIN_EDGES = (0, 6, 12, 18, 24)  # khung giờ cho luật kết hợp: đêm, sáng, chiều, tối
+DISCRETIZE_LEVELS = ("thap", "trung_binh", "cao")  # mức tiêu thụ, mức hệ số công suất: 3 mức theo tam phân vị của TRAIN
+N_KMEANS_INIT = 10  # số lần khởi tạo k-means
+# Lưới siêu tham số (chỉ chọn trên train bằng kiểm định chéo phân tầng, tên tham số theo scikit-learn)
+CLASSIFIER_GRID = {
+    "decision_tree": {"max_depth": [3, 5, 7, 10, None]},
+    "knn": {"n_neighbors": [3, 5, 7, 11]},
+    "logistic_regression": {"C": [0.1, 1.0, 10.0]},
+}
+REGRESSOR_GRID = {
+    "decision_tree": {"max_depth": [3, 5, 7, 10, None]},
+    "linear_regression": {},
+}
