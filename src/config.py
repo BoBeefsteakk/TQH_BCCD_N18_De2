@@ -2,7 +2,7 @@
 
 Mọi thông số đặt ở đây; không rải số "ma thuật" ở nơi khác (có test chặn).
 Đổi một hằng số = đổi quyết định của nhóm -> ghi vào docs/decisions/.
-Nhãn NOT VERIFIED = lấy từ đề hoặc trí nhớ, chưa đối chiếu với tệp dữ liệu thật (task T001 kiểm).
+Nhãn NOT VERIFIED = chưa đối chiếu với tệp dữ liệu thật. Dữ liệu và tên cột đã kiểm ở T001 (18/11/2026).
 """
 from __future__ import annotations
 
@@ -24,32 +24,40 @@ TOPIC_NO = 2
 SEED = 4759
 
 # --- Dữ liệu (đề, Đề 2; nguồn UCI Machine Learning Repository) ---------------------------------
-# URL, kích thước, SHA-256: NOT VERIFIED. Điền sau khi tải thật lần đầu (data/download_data.py in ra).
+# URL, kích thước, SHA-256: ĐÃ KIỂM (T001, 18/11/2026): tải thật từ UCI, 35.040 dòng, 11 cột.
 DATA_URL = "https://archive.ics.uci.edu/static/public/851/steel+industry+energy+consumption.zip"
 DATA_LOCAL_NAME = "steel.csv"
-DATA_SIZE_BYTES: int | None = None
-DATA_SHA256: str | None = None
+DATA_SIZE_BYTES: int | None = 2731389
+DATA_SHA256: str | None = "9b1cee6f9cb9cd9df2b95814ca90a9a2ff15b7f5f1fba0fae3c643e82072eacc"
 
 EXPECTED_ROWS = 35040  # theo đề: 35.040 bản ghi 15 phút trong năm 2018
 EXPECTED_COLS = 11  # theo đề: mười một cột
 
 TIME_COL = "date"
+DATE_FORMAT = "%d/%m/%Y %H:%M"  # định dạng chuỗi ngày trong tệp (ĐÃ KIỂM T001)
 TARGET_REG = "Usage_kWh"
 TARGET_CLS = "Load_Type"
-# Tên cột: NOT VERIFIED (trí nhớ về bộ UCI; T001 đối chiếu với tệp thật rồi sửa tại đây).
+# Tên cột: ĐÃ KIỂM với tệp thật (T001). NSM = số giây từ nửa đêm.
 FEATURE_COLS_NUMERIC = [
     "Lagging_Current_Reactive.Power_kVarh",
     "Leading_Current_Reactive_Power_kVarh",
-    "CO2(tCO2)",
     "Lagging_Current_Power_Factor",
     "Leading_Current_Power_Factor",
     "NSM",
 ]
 FEATURE_COLS_CATEGORICAL = ["WeekStatus", "Day_of_week"]
-LOAD_CLASSES = ["Light_Load", "Medium_Load", "Maximum_Load"]  # NOT VERIFIED
-# CO2 có suy ra trực tiếp từ Usage_kWh không? (đề yêu cầu kiểm trước khi dùng làm đầu vào). UNKNOWN: T001 kiểm.
-# Cột bị loại khỏi đặc trưng vì rò rỉ nhãn/đích; để rỗng cho đến khi T001 có bằng chứng.
-LEAKY_COLS: list[str] = []
+LOAD_CLASSES = ["Light_Load", "Medium_Load", "Maximum_Load"]  # ĐÃ KIỂM (T001): 51,6% / 27,7% / 20,8%
+# Rò rỉ (T001/T002, 18/11/2026): CO2 tương quan 0,988 với Usage_kWh và chỉ là Usage_kWh làm tròn
+# nhân hệ số -> loại khỏi đặc trưng (đề yêu cầu kiểm CO2 trước khi dùng). Load_Type KHÔNG suy ra được từ
+# Usage_kWh (cây quyết định chỉ trên Usage_kWh: accuracy 0,65), nên không phải rò rỉ theo nghĩa suy ra trực tiếp.
+LEAKY_COLS: list[str] = ["CO2(tCO2)"]
+# Hồi quy Usage_kWh: Load_Type là nhãn dựng từ mức tiêu thụ nên cũng bị loại khỏi đặc trưng của hồi quy.
+# Phân lớp Load_Type: Usage_kWh không dùng làm đầu vào (đo thử: bỏ Usage_kWh không làm giảm F1).
+CLS_EXCLUDE_COLS = [TARGET_REG]
+REG_EXCLUDE_COLS = [TARGET_CLS]
+# Giá trị vô lý (khối B): hệ số công suất ngoài khoảng này, NSM ngoài một ngày
+PF_RANGE = (0.0, 100.0)
+NSM_MAX = 85500  # 23:45 = 85.500 giây từ nửa đêm
 
 # --- Chia dữ liệu, kiểm định -------------------------------------------------------------------
 # Đề xuất của Phi, chờ chốt (decisions/): chia theo thời gian, phần cuối làm tập kiểm tra,
@@ -95,3 +103,16 @@ REGRESSOR_GRID = {
     "decision_tree": {"max_depth": [3, 5, 7, 10, None]},
     "linear_regression": {},
 }
+
+# --- Đầu ra bảng (docs/CONVENTIONS.md mục 4: results/tables/<khối>_<số>_<mô_tả>.csv) ---------------
+TBL_QUALITY_BEFORE = "b_01_chat_luong_truoc.csv"
+TBL_QUALITY_AFTER = "b_02_chat_luong_sau.csv"
+TBL_LEAKAGE = "b_03_kiem_ro_ri.csv"
+TBL_CLS_CV = "e_01_phan_lop_cv.csv"
+TBL_REG_CV = "e_02_hoi_quy_cv.csv"
+TBL_CLS_TUNE = "e_03_chinh_tham_so.csv"
+TBL_CLS_TEST = "g_01_phan_lop_tung_lop.csv"
+TBL_CLS_CONFUSIONS = "g_02_cap_nham_lan.csv"
+TBL_REG_TEST = "g_03_hoi_quy_kiem_tra.csv"
+
+LOGREG_MAX_ITER = 1000  # số vòng lặp tối đa của hồi quy logistic (đủ hội tụ trên dữ liệu đã chuẩn hóa)

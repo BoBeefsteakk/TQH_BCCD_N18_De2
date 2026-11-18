@@ -2,7 +2,7 @@
 
 Báo cáo chuyên đề học phần **Phân tích và trực quan hóa dữ liệu (004759)**, Trường Đại học Điện lực. Lớp D18CNPM1, Nhóm 18, 3 thành viên. Dữ liệu: UCI Steel Industry Energy Consumption (35.040 bản ghi 15 phút, năm 2018).
 
-> **Làm việc nhóm: đọc [`TEAM.md`](TEAM.md) trước.** Trạng thái: khung ban đầu; phần cài đặt trong `src/` còn là stub. Thông số ở [`src/config.py`](src/config.py).
+> **Làm việc nhóm: đọc [`TEAM.md`](TEAM.md) trước.** Trạng thái: T001, T002 xong; `data_prep`, `models`, `evaluate`, `run_all` đã cài; `viz`, `assoc`, `clustering`, `reduce` còn là stub. Thông số ở [`src/config.py`](src/config.py).
 
 ## Môi trường
 Python 3.12, trong `.venv`, thư viện ở `requirements.txt` (ghim `==`).
@@ -26,7 +26,7 @@ URL, kích thước và SHA-256 trong `src/config.py` **chưa kiểm chứng** (
 
 ## Chạy lại kết quả
 ```powershell
-python run_all.py          # từ dữ liệu gốc đến kết quả (hiện chưa có stage nào)
+python run_all.py          # dữ liệu (khối B) + mô hình, đánh giá (E, G); ~13 giây
 python -m pytest           # cấu trúc, cấu hình, giao diện, số ma thuật, công cụ task
 ```
 
@@ -86,9 +86,9 @@ Xem `TEAM.md` mục 8. Trưởng nhóm đã bỏ tối đa ràng buộc AI: AI �
 | Nhánh và `user.name` khớp nhau (`doctor.py`, chạy tay) | Không push lên nhánh người khác (đã bảo vệ `main`) |
 
 ### Còn mở (chưa kết luận)
-- **UNKNOWN:** ngày giao đề, ngày thi, hạn nộp thật. Nhóm đã đăng ký đề với giảng viên chưa.
-- **UNKNOWN:** URL, kích thước, SHA-256 của dữ liệu; tên cột thật (T001).
-- **UNKNOWN:** CO2 và `Load_Type` có gần suy ra từ `Usage_kWh` không (T002).
+- Ngày thi: 10/01/2027 (Phi báo). **UNKNOWN:** ngày giao đề, hạn nộp thật, kênh nộp. Nhóm đã đăng ký Đề 2 (Phi xác nhận trên sheet).
+- Dữ liệu đã kiểm (T001, T002): URL, SHA-256, tên cột, 35.040 dòng; CO2 gần suy ra từ `Usage_kWh` (loại); `Load_Type` không suy ra trực tiếp từ `Usage_kWh`.
+- **UNKNOWN:** mốc 00:00 mỗi ngày thuộc ngày D hay D+1 (365 dòng). **Cần nhóm quyết định:** hồi quy Usage_kWh gần tất định theo công suất phản kháng và hệ số công suất (R² 0,999), có giữ hai cột này làm đầu vào không.
 - **UNKNOWN:** Chương 5 (phân cụm) có tài liệu không; seaborn/plotly có được dùng không; giảng viên có chấp nhận AI viết mã và báo cáo không.
 
 ## Checklist theo phase

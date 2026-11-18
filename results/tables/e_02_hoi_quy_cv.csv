@@ -1,0 +1,3 @@
+mo_hinh,tham_so_tot_nhat,rmse_cv
+decision_tree,{'max_depth': None},1.578253137372903
+linear_regression,{},10.489211689187483

@@ -12,3 +12,8 @@
 | 17/11/2026 | Ba mô hình phân lớp: cây quyết định, k-NN, hồi quy logistic; hồi quy: tuyến tính, cây | Đều thuộc Chương 4; đủ tối thiểu của đề | `CLASSIFIER_GRID`, `REGRESSOR_GRID` |
 | 17/11/2026 | Ngoại lai chỉ đánh dấu, không xóa; không lấy mẫu con | Phụ tải cao là chế độ Maximum_Load thật; dữ liệu chỉ 35.040 dòng | `OUTLIER_POLICY`, `SAMPLING` |
 | 17/11/2026 | Luật kết hợp: 4 khung giờ, 3 mức theo tam phân vị của train | Đủ gọn để Apriori chạy nhanh, diễn giải được | `HOUR_BIN_EDGES`, `DISCRETIZE_LEVELS` |
+| 18/11/2026 | Ngày thi 10/01/2027; hạn nộp thật và kênh nộp vẫn UNKNOWN | Phi báo ngày thi; hạn nộp tự phân | Task giữ `due: TBD` đến khi có ngày |
+| 18/11/2026 | Loại CO2 khỏi đặc trưng (`LEAKY_COLS`); hồi quy bỏ Load_Type; phân lớp không dùng Usage_kWh | CO2 tương quan 0,988 với Usage_kWh; Load_Type dựng từ mức tiêu thụ; bỏ Usage_kWh không giảm F1 phân lớp | `config.LEAKY_COLS`, `CLS_EXCLUDE_COLS`, `REG_EXCLUDE_COLS`, `results/tables/b_03` |
+| 18/11/2026 | Không dùng cột tháng làm đặc trưng | Chia theo thời gian: tập kiểm tra có tháng chưa từng thấy ở train | `data_prep.feature_columns` |
+| 18/11/2026 | Chia tập theo THỨ TỰ DÒNG, không theo chuỗi ngày | Mốc 00:00 mỗi ngày nằm cuối khối 96 dòng của ngày đó | `data_prep.time_split` |
+| 18/11/2026 | `data/clean/*.csv` không vào git, nộp bằng zip | Tệp > 1 MB bị CI chặn | `.gitignore` |
