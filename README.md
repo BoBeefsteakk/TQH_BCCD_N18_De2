@@ -109,7 +109,7 @@ src/        config, data_prep, reduce, viz, assoc, models, clustering, evaluate
 data/       download_data.py (data/raw/ không vào git; data/clean/ là dữ liệu sạch nộp kèm)
 notebooks/  huan_*, viet_*, phi_*  (xóa output trước khi commit)
 results/    figures/, tables/  (do mã sinh ra)
-docs/       CHECKLIST, CONVENTIONS, DE2, BAOCAO_DAN_Y, PHI/HUAN/VIET, PROJECT_RECORDS, TESTCASES, DATA_DICTIONARY, decisions/
+docs/       CHECKLIST, CONVENTIONS, DE2, BAOCAO_DAN_Y, BAOCAO_NHAP_PHI, PHI/HUAN/VIET, PROJECT_RECORDS, TESTCASES, DATA_DICTIONARY, decisions/
 tasks/      Txxx-*.md  (scripts/tasks.py)
 scripts/    doctor.py, tasks.py
 tests/      pytest

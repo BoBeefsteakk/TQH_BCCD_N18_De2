@@ -120,3 +120,14 @@ TBL_REG_TEST = "g_03_hoi_quy_kiem_tra.csv"
 
 LOGREG_MAX_ITER = 1000  # số vòng lặp tối đa của hồi quy logistic (đủ hội tụ trên dữ liệu đã chuẩn hóa)
 TBL_REG_NO_PHYSICS = "g_04_hoi_quy_bo_cot_vat_ly.csv"
+TBL_CLS_ERR_HOUR = "g_05_loi_phan_lop_theo_gio.csv"
+TBL_CLS_ERR_DAYTYPE = "g_06_loi_phan_lop_theo_loai_ngay.csv"
+TBL_IMP_CLS = "g_07_do_quan_trong_phan_lop.csv"
+TBL_IMP_REG = "g_08_do_quan_trong_hoi_quy_bo_cot_vat_ly.csv"
+
+# Thử điều chỉnh để cải thiện phân lớp (mục 5.3): trọng số lớp cân bằng; đặc trưng trễ (chỉ nhìn về quá khứ)
+ADJUST_CLASS_WEIGHT = "balanced"
+LAG_WINDOW = 4  # 4 mốc 15 phút = 1 giờ gần nhất
+LAG_COLS = ["Lagging_Current_Reactive.Power_kVarh", "Leading_Current_Reactive_Power_kVarh",
+            "Lagging_Current_Power_Factor", "Leading_Current_Power_Factor"]
+TBL_CLS_ADJUST = "g_09_thu_dieu_chinh_phan_lop.csv"

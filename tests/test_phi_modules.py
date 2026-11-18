@@ -98,3 +98,12 @@ def test_reg_no_physics_drops_reactive_and_pf():
     xtr, _ = data_prep.make_features(train, test, "reg_no_physics")
     assert not set(config.REG_NO_PHYSICS_COLS) & set(xtr.columns)
     assert "NSM" in xtr.columns
+
+
+def test_lag_features_look_backward_only():
+    out = data_prep.add_lag_features(data_prep.clean(_fake()))
+    col = config.LAG_COLS[0]
+    assert out[f"{col}_hieu1"].iloc[0] == 0.0
+    assert out[f"{col}_tb{config.LAG_WINDOW}"].iloc[0] == out[col].iloc[0]
+    assert out[f"{col}_hieu1"].iloc[5] == pytest.approx(out[col].iloc[5] - out[col].iloc[4])
+    assert len(data_prep.lag_feature_names()) == 2 * len(config.LAG_COLS)

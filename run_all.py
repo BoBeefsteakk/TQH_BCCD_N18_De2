@@ -54,6 +54,11 @@ def stage_models(clean: pd.DataFrame) -> None:
         t = evaluate.classification_report_table(test[config.TARGET_CLS], pred, labels)
         test_tables.append(t.assign(mo_hinh=name))
         confusions.append(evaluate.top_confusions(test[config.TARGET_CLS], pred, labels).assign(mo_hinh=name))
+    best = max(clfs, key=lambda n: clfs[n].best_score_)  # chọn theo F1 macro CV trên train, không nhìn test
+    best_pred = clfs[best].predict(xc_te)
+    _save(evaluate.error_by_group(test[config.TARGET_CLS], best_pred, test["hour"]), config.TBL_CLS_ERR_HOUR)
+    _save(evaluate.error_by_group(test[config.TARGET_CLS], best_pred, test["WeekStatus"]), config.TBL_CLS_ERR_DAYTYPE)
+    _save(evaluate.feature_importance_table(clfs["decision_tree"], list(xc_tr.columns)), config.TBL_IMP_CLS)
     _save(pd.DataFrame(cv_rows), config.TBL_CLS_CV)
     _save(pd.concat(test_tables, ignore_index=True), config.TBL_CLS_TEST)
     _save(pd.concat(confusions, ignore_index=True), config.TBL_CLS_CONFUSIONS)
@@ -76,11 +81,35 @@ def stage_models(clean: pd.DataFrame) -> None:
     _save(pd.DataFrame([{"mo_hinh": n, "tham_so_tot_nhat": str(m.best_params_), "rmse_cv": -m.best_score_,
                          **evaluate.regression_report(test[config.TARGET_REG], m.predict(xn_te))}
                         for n, m in regs_np.items()]), config.TBL_REG_NO_PHYSICS)
+    _save(evaluate.feature_importance_table(regs_np["decision_tree"], list(xn_tr.columns)), config.TBL_IMP_REG)
+
+
+def stage_adjust(clean: pd.DataFrame) -> None:
+    """Thử điều chỉnh phân lớp (cây quyết định): trọng số lớp, đặc trưng trễ, cả hai. Báo trước/sau trên cùng test."""
+    lagged = data_prep.add_lag_features(clean)
+    train, test = data_prep.time_split(lagged)
+    base_tr, base_te = data_prep.make_features(train, test, "cls")
+    lag = data_prep.lag_feature_names()
+    variants = {
+        "goc": (base_tr, base_te, None),
+        "class_weight": (base_tr, base_te, config.ADJUST_CLASS_WEIGHT),
+        "dac_trung_tre": (base_tr.join(train[lag]), base_te.join(test[lag]), None),
+        "ca_hai": (base_tr.join(train[lag]), base_te.join(test[lag]), config.ADJUST_CLASS_WEIGHT),
+    }
+    rows = []
+    for name, (xtr, xte, cw) in variants.items():
+        m = models.tune_tree_variant(xtr, train[config.TARGET_CLS], cw)
+        pred = m.predict(xte)
+        rep = evaluate.classification_report_table(test[config.TARGET_CLS], pred, config.LOAD_CLASSES).set_index("lop")
+        rows.append({"bien_the": name, "tham_so_tot_nhat": str(m.best_params_), "f1_macro_cv": m.best_score_,
+                     "f1_macro_test": rep.loc["macro_avg", "f1"], "accuracy_test": rep.loc["accuracy", "f1"]})
+    _save(pd.DataFrame(rows), config.TBL_CLS_ADJUST)
 
 
 def main() -> int:
     clean = stage_b()
     stage_models(clean)
+    stage_adjust(clean)
     print(f"Xong. Bảng ở {config.TABLE_DIR}")
     return 0
 

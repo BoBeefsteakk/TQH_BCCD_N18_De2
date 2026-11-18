@@ -35,3 +35,20 @@ def top_confusions(y_true, y_pred, labels: list[str]) -> pd.DataFrame:
                 n = int(((t == a) & (p == b)).sum())
                 rows.append({"that": a, "doan": b, "so_luong": n, "ti_le_tren_lop_that": n / n_a if n_a else 0.0})
     return pd.DataFrame(rows).sort_values("so_luong", ascending=False, ignore_index=True)
+
+
+def error_by_group(y_true, y_pred, groups) -> pd.DataFrame:
+    """Accuracy và số mẫu theo từng nhóm (ví dụ giờ trong ngày, loại ngày), để xem lỗi tập trung ở đâu."""
+    df = pd.DataFrame({"nhom": np.asarray(groups), "dung": np.asarray(y_true) == np.asarray(y_pred)})
+    g = df.groupby("nhom")["dung"].agg(["mean", "size"]).reset_index()
+    return g.rename(columns={"mean": "accuracy", "size": "so_mau"})
+
+
+def feature_importance_table(model, feature_names: list[str]) -> pd.DataFrame:
+    """Độ quan trọng đặc trưng của mô hình dạng cây (feature_importances_), sắp giảm dần."""
+    est = getattr(model, "best_estimator_", model)
+    imp = getattr(est, "feature_importances_", None)
+    if imp is None:
+        raise ValueError("Mô hình không có feature_importances_ (chỉ dùng cho cây)")
+    return pd.DataFrame({"dac_trung": feature_names, "do_quan_trong": imp}).sort_values(
+        "do_quan_trong", ascending=False, ignore_index=True)

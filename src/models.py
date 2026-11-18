@@ -74,3 +74,11 @@ def train_classifiers(x_train: pd.DataFrame, y_train: pd.Series) -> dict[str, ob
 def train_regressors(x_train: pd.DataFrame, y_train: pd.Series) -> dict[str, object]:
     """Huấn luyện các mô hình hồi quy trong config.REGRESSOR_GRID; trả {tên: mô hình đã tune}."""
     return {name: tune(name, x_train, y_train) for name in config.REGRESSOR_GRID}
+
+
+def tune_tree_variant(x_train: pd.DataFrame, y_train: pd.Series, class_weight=None) -> object:
+    """Cây quyết định phân lớp với lưới của config và class_weight tùy chọn (dùng cho thử điều chỉnh, mục 5.3)."""
+    est = DecisionTreeClassifier(random_state=config.SEED, class_weight=class_weight)
+    search = GridSearchCV(est, config.CLASSIFIER_GRID["decision_tree"], scoring=CLS_SCORING[config.PRIMARY_METRIC_CLS],
+                          cv=_cv(False), n_jobs=1, refit=True)
+    return search.fit(x_train, y_train)

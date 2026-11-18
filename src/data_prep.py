@@ -110,6 +110,22 @@ def make_features(train: pd.DataFrame, test: pd.DataFrame, task: str) -> tuple[p
     return x_train, x_test.reindex(columns=x_train.columns, fill_value=0.0)
 
 
+def add_lag_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Thêm trung bình trượt LAG_WINDOW mốc gần nhất và hiệu với mốc trước của các cột trong config.LAG_COLS.
+
+    Chỉ nhìn về quá khứ (không dùng dữ liệu tương lai) nên áp được trước khi chia tập theo thời gian.
+    """
+    out = df.copy()
+    for col in config.LAG_COLS:
+        out[f"{col}_tb{config.LAG_WINDOW}"] = out[col].rolling(config.LAG_WINDOW, min_periods=1).mean()
+        out[f"{col}_hieu1"] = out[col].diff().fillna(0.0)
+    return out
+
+
+def lag_feature_names() -> list[str]:
+    return [f"{c}_{suf}" for c in config.LAG_COLS for suf in (f"tb{config.LAG_WINDOW}", "hieu1")]
+
+
 def save_clean(df: pd.DataFrame) -> None:
     """Ghi dữ liệu sạch ra config.CLEAN_DIR / config.CLEAN_DATA_NAME."""
     config.CLEAN_DIR.mkdir(parents=True, exist_ok=True)
