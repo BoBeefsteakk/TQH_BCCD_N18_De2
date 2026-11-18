@@ -91,10 +91,12 @@ def time_split(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def feature_columns(task: str) -> list[str]:
-    """Danh sách cột đặc trưng (trước khi mã hóa one-hot) cho 'cls' hoặc 'reg', theo config."""
-    if task not in ("cls", "reg"):
-        raise ValueError("task phải là 'cls' hoặc 'reg'")
+    """Danh sách cột đặc trưng (trước khi mã hóa one-hot) cho 'cls', 'reg' hoặc 'reg_no_physics' (bỏ cột vật lý), theo config."""
+    if task not in ("cls", "reg", "reg_no_physics"):
+        raise ValueError("task phải là 'cls', 'reg' hoặc 'reg_no_physics'")
     banned = set(config.LEAKY_COLS) | set(config.CLS_EXCLUDE_COLS if task == "cls" else config.REG_EXCLUDE_COLS)
+    if task == "reg_no_physics":
+        banned |= set(config.REG_NO_PHYSICS_COLS)
     # Không dùng tháng: tập kiểm tra (cuối năm) có tháng chưa từng thấy ở train nên mô hình chỉ ngoại suy.
     cols = config.FEATURE_COLS_NUMERIC + [HOUR_COL] + config.FEATURE_COLS_CATEGORICAL
     return [c for c in cols if c not in banned]

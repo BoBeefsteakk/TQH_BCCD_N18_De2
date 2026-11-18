@@ -90,3 +90,11 @@ def test_regression_report_perfect_and_offset():
     assert evaluate.regression_report(y, y) == {"mae": 0.0, "rmse": 0.0, "r2": 1.0}
     r = evaluate.regression_report(y, y + 1)
     assert r["mae"] == pytest.approx(1.0) and r["rmse"] == pytest.approx(1.0)
+
+
+def test_reg_no_physics_drops_reactive_and_pf():
+    out = data_prep.clean(_fake())
+    train, test = data_prep.time_split(out)
+    xtr, _ = data_prep.make_features(train, test, "reg_no_physics")
+    assert not set(config.REG_NO_PHYSICS_COLS) & set(xtr.columns)
+    assert "NSM" in xtr.columns

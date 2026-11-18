@@ -70,6 +70,13 @@ def stage_models(clean: pd.DataFrame) -> None:
     _save(pd.DataFrame(rows), config.TBL_REG_CV)
     _save(pd.DataFrame(test_rows), config.TBL_REG_TEST)
 
+    # Đối chứng: bỏ công suất phản kháng và hệ số công suất (Usage_kWh suy ra được từ chúng)
+    xn_tr, xn_te = data_prep.make_features(train, test, "reg_no_physics")
+    regs_np = models.train_regressors(xn_tr, train[config.TARGET_REG])
+    _save(pd.DataFrame([{"mo_hinh": n, "tham_so_tot_nhat": str(m.best_params_), "rmse_cv": -m.best_score_,
+                         **evaluate.regression_report(test[config.TARGET_REG], m.predict(xn_te))}
+                        for n, m in regs_np.items()]), config.TBL_REG_NO_PHYSICS)
+
 
 def main() -> int:
     clean = stage_b()

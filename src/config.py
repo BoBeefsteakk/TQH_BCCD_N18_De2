@@ -55,6 +55,9 @@ LEAKY_COLS: list[str] = ["CO2(tCO2)"]
 # Phân lớp Load_Type: Usage_kWh không dùng làm đầu vào (đo thử: bỏ Usage_kWh không làm giảm F1).
 CLS_EXCLUDE_COLS = [TARGET_REG]
 REG_EXCLUDE_COLS = [TARGET_CLS]
+# Bản đối chứng hồi quy (18/11/2026): bỏ công suất phản kháng và hệ số công suất (Usage_kWh = Q*PF/sqrt(1-PF^2))
+REG_NO_PHYSICS_COLS = ["Lagging_Current_Reactive.Power_kVarh", "Leading_Current_Reactive_Power_kVarh",
+                       "Lagging_Current_Power_Factor", "Leading_Current_Power_Factor"]
 # Giá trị vô lý (khối B): hệ số công suất ngoài khoảng này, NSM ngoài một ngày
 PF_RANGE = (0.0, 100.0)
 NSM_MAX = 85500  # 23:45 = 85.500 giây từ nửa đêm
@@ -116,3 +119,4 @@ TBL_CLS_CONFUSIONS = "g_02_cap_nham_lan.csv"
 TBL_REG_TEST = "g_03_hoi_quy_kiem_tra.csv"
 
 LOGREG_MAX_ITER = 1000  # số vòng lặp tối đa của hồi quy logistic (đủ hội tụ trên dữ liệu đã chuẩn hóa)
+TBL_REG_NO_PHYSICS = "g_04_hoi_quy_bo_cot_vat_ly.csv"
