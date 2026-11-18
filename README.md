@@ -88,7 +88,7 @@ Xem `TEAM.md` mục 8. Trưởng nhóm đã bỏ tối đa ràng buộc AI: AI �
 ### Còn mở (chưa kết luận)
 - Ngày thi: 10/01/2027 (Phi báo). **UNKNOWN:** ngày giao đề, hạn nộp thật, kênh nộp. Nhóm đã đăng ký Đề 2 (Phi xác nhận trên sheet).
 - Dữ liệu đã kiểm (T001, T002): URL, SHA-256, tên cột, 35.040 dòng; CO2 gần suy ra từ `Usage_kWh` (loại); `Load_Type` không suy ra trực tiếp từ `Usage_kWh`.
-- **UNKNOWN:** mốc 00:00 mỗi ngày thuộc ngày D hay D+1 (365 dòng). **Cần nhóm quyết định:** hồi quy Usage_kWh gần tất định theo công suất phản kháng và hệ số công suất (R² 0,999), có giữ hai cột này làm đầu vào không.
+- **UNKNOWN:** mốc 00:00 mỗi ngày thuộc ngày D hay D+1 (365 dòng). **Đã quyết:** hồi quy Usage_kWh giữ công suất phản kháng và hệ số công suất làm đầu vào; đã kiểm Usage_kWh = Q·PF/√(1−PF²), nên R² 0,999 là tái tạo công thức và báo cáo phải nói rõ.
 - **UNKNOWN:** Chương 5 (phân cụm) có tài liệu không; seaborn/plotly có được dùng không; giảng viên có chấp nhận AI viết mã và báo cáo không.
 
 ## Checklist theo phase

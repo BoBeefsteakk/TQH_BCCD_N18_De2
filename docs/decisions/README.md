@@ -17,3 +17,4 @@
 | 18/11/2026 | Không dùng cột tháng làm đặc trưng | Chia theo thời gian: tập kiểm tra có tháng chưa từng thấy ở train | `data_prep.feature_columns` |
 | 18/11/2026 | Chia tập theo THỨ TỰ DÒNG, không theo chuỗi ngày | Mốc 00:00 mỗi ngày nằm cuối khối 96 dòng của ngày đó | `data_prep.time_split` |
 | 18/11/2026 | `data/clean/*.csv` không vào git, nộp bằng zip | Tệp > 1 MB bị CI chặn | `.gitignore` |
+| 18/11/2026 | Hồi quy giữ công suất phản kháng và hệ số công suất làm đầu vào, ghi rõ trong báo cáo | Phi quyết; đã kiểm Usage_kWh = Q·PF/√(1−PF²) (tương quan 0,9999994) | R² 0,999 là tái tạo công thức, nêu ở kết quả và hạn chế; so sánh thêm bản bỏ hai cột nếu còn thời gian |
