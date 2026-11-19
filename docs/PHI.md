@@ -11,4 +11,4 @@ Nhánh: `phi-lead-data-models`. Đọc `TEAM.md` trước.
 - Hạ tầng: `src/config.py`, `docs/`, `tasks/`, `scripts/`, `.github/`.
 
 ## Mã chấm chính
-1.1, 2.2, 2.3 (cùng Việt), 4.2, 4.4, 5.2, 5.3, 6.1, 7.1, 7.2.
+1.1 (cùng Việt: Phi viết Chương 1), 2.2, 2.3 (cùng Việt), 4.2 (cùng Việt: Phi làm mô hình, Việt làm so sánh giảm chiều), 4.4, 5.2, 5.3, 6.1, 7.1, 7.2.

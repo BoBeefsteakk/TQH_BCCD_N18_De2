@@ -33,10 +33,10 @@ Trang bìa: tên trường, khoa, học phần (Phân tích và trực quan hóa
 |---|---|---|---|
 | 1. Mở đầu | 3 | 1.1 | Phi |
 | 2. Yêu cầu và dữ liệu | 4 | 1.1, 2.1 | Huấn |
-| 3. Thiết kế sơ bộ | 3 | 1.1 | Phi |
+| 3. Thiết kế sơ bộ | 3 | 1.1 | Việt (khung của Phi, Phi chốt) |
 | 4. Cài đặt | 9 | 2.2, 2.3, 3.1–3.4, 4.1–4.4 | Phi, Huấn, Việt |
 | 5. Kiểm thử và đánh giá | 4 | 5.1, 5.2, 5.3 | Phi, Huấn |
-| 6. Kết luận | 1 | 5.3 | Phi |
+| 6. Kết luận | 1 | 5.3 | Việt |
 | 7. Quản lý công việc nhóm | 2 | 6.1, 6.2 | Phi |
 | **Tổng** | **26** | | |
 
@@ -63,7 +63,7 @@ Cấu trúc 7 chương theo đề. Cột "Khối liên quan" của bảng cấu 
 - Hình/bảng: Bảng 2.1 từ điển dữ liệu; Bảng 2.2 thống kê mô tả; Bảng 2.3 phân bố lớp.
 
 ## Chương 3. Thiết kế sơ bộ (3 trang; mã 1.1, 0,5 điểm dùng chung với Chương 1)
-**Người viết: Phi.**
+**Người viết: Việt** (chuyển từ Phi 19/11/2026, task T011; khung ở `docs/BAOCAO_NHAP_PHI.md`; Phi chốt quy trình).
 - 3.1 Quy trình phân tích: chọn **CRISP-DM, KDD hoặc SEMMA** và giải thích cách áp dụng vào đề (chưa chọn: `UNKNOWN`, nhóm chọn ở P1).
 - 3.2 Kế hoạch tiền xử lý (kiểm chất lượng, làm sạch, mã hóa, chuẩn hóa, giảm chiều).
 - 3.3 Danh mục biểu đồ dự kiến (bảng: mã hình, loại, câu hỏi phục vụ).
@@ -99,7 +99,7 @@ Hình/bảng liên quan luật kết hợp và mô hình xếp ở 4.3, 4.4, 4.5
 - Hình/bảng: Bảng 4.3 luật hàng đầu theo lift; Hình 4.8 tán xạ support–confidence (trực quan luật, 3.2); bảng tương quan.
 
 ### 4.4 Phân lớp và dự đoán (2 trang; 4.2, 4.4, 3.3) — Phi (hình: Huấn)
-- Ít nhất 3 mô hình phân lớp, hồi quy `Usage_kWh`; chia theo thời gian; kiểm định chéo phân tầng; chỉnh tham số (lưới ở `src/config.py`); so sánh có và không giảm chiều.
+- Ít nhất 3 mô hình phân lớp, hồi quy `Usage_kWh`; chia theo thời gian; kiểm định chéo phân tầng; chỉnh tham số (lưới ở `src/config.py`); so sánh có và không giảm chiều (Việt viết đoạn này, T010).
 - Hình/bảng: Bảng 4.4 lưới tham số và kết quả chọn; Hình 4.9 ma trận nhầm lẫn; Hình 4.10 độ quan trọng thuộc tính hoặc hình cây quyết định.
 
 ### 4.5 Phân cụm (1,5 trang; 4.3, 3.3) — Việt
@@ -114,7 +114,7 @@ Hình/bảng liên quan luật kết hợp và mô hình xếp ở 4.3, 4.4, 4.5
 - Hình/bảng: Bảng 5.1 so sánh mô hình; Bảng 5.2 chỉ số từng lớp; Bảng 5.3 cặp lớp nhầm nhiều nhất; Bảng 5.4 trước/sau điều chỉnh.
 
 ## Chương 6. Kết luận (1 trang; mã 5.3)
-**Người viết: Phi.** Trả lời từng câu hỏi phân tích bằng số từ `results/`; hạn chế (một nhà máy, một năm, rò rỉ nếu có); hướng phát triển (Random Forest, dự báo giờ kế tiếp, khuyến nghị dịch chuyển phụ tải: gợi ý mở rộng của đề, không bắt buộc với nhóm 3).
+**Người viết: Việt** (chuyển từ Phi 19/11/2026, T012; khung ở `docs/BAOCAO_NHAP_PHI.md`). Trả lời từng câu hỏi phân tích bằng số từ `results/`; hạn chế (một nhà máy, một năm, rò rỉ nếu có); hướng phát triển (Random Forest, dự báo giờ kế tiếp, khuyến nghị dịch chuyển phụ tải: gợi ý mở rộng của đề, không bắt buộc với nhóm 3).
 
 ## Chương 7. Quản lý công việc nhóm (2 trang; mã 6.1, 6.2)
 **Người viết: Phi (cả nhóm xác nhận).** Điều kiện được điểm: kế hoạch rõ, phân công hợp lý, theo dõi tiến độ, quản lý rủi ro, minh chứng đóng góp cá nhân rõ.

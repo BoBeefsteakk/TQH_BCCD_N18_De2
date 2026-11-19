@@ -12,7 +12,7 @@ Chạy `git config user.name` rồi đối chiếu bảng. Không khớp ai → 
 |---|---|---|---|---|---|---|
 | Nguyễn Bảo Phi | 23810310017 | `Nguyen Bao Phi` | Trưởng nhóm: giao task, review, merge; dữ liệu, mô hình, đánh giá | `BoBeefsteakk` | `phi-lead-data-models` | `docs/PHI.md` |
 | Đỗ Minh Huấn | 23810310075 | `Do Minh Huan` | Thành viên: trực quan hóa, từ điển dữ liệu, bảng ca kiểm thử | `minhhuan15082k5-sudo` | `huan-viz-testcases` | `docs/HUAN.md` |
-| Nguyễn Serov Trọng Việt | 23810310019 | `Nguyen Serov Trong Viet` | Thành viên: luật kết hợp, phân cụm, giảm chiều | `viet29oct` | `viet-assoc-cluster` | `docs/VIET.md` |
+| Nguyễn Serov Trọng Việt | 23810310019 | `Nguyen Serov Trong Viet` | Thành viên: luật kết hợp, phân cụm, giảm chiều, so sánh có/không giảm chiều, Chương 3 và 6 báo cáo, slide | `viet29oct` | `viet-assoc-cluster` | `docs/VIET.md` |
 
 Nhánh chung: `main` (chỉ nhận PR, chỉ Phi merge). **Chỉ có đúng 4 nhánh này.**
 
@@ -35,8 +35,8 @@ Mỗi loại thông tin chỉ có MỘT chỗ:
 | Người | Được sửa |
 |---|---|
 | Phi | `src/config.py`, `src/data_prep.py`, `src/models.py`, `src/evaluate.py`, `run_all.py`, `data/download_data.py`, `docs/` (trừ file Huấn sở hữu, `trace_*.md`), `tasks/` (tạo task), `.github/`, `prompts/`, `scripts/`, `TEAM.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `requirements.txt`, `pytest.ini`, `.gitignore`, `.gitattributes` |
-| Huấn | `src/viz.py`, `docs/DATA_DICTIONARY.md`, `docs/TESTCASES.md`, `notebooks/huan_*` |
-| Việt | `src/assoc.py`, `src/clustering.py`, `src/reduce.py`, `notebooks/viet_*` |
+| Huấn | `src/viz.py`, `docs/DATA_DICTIONARY.md`, `docs/TESTCASES.md`, `docs/BAOCAO_DINH_DANG.md`, `notebooks/huan_*` |
+| Việt | `src/assoc.py`, `src/clustering.py`, `src/reduce.py`, `notebooks/viet_*`, `docs/BAOCAO_NHAP_VIET.md`, `docs/SLIDE_NHAP.md` |
 | Ai cũng được | file task của mình, `docs/trace_<tên>.md` của mình, `results/figures|tables/` (chỉ tệp do mã của mình sinh ra, tên theo `CONVENTIONS.md`), `tests/` của khối mình |
 
 Cần sửa file của người khác → ghi vào task, nhắn chủ file. Không tự sửa. `tests/test_interfaces.py` là test dùng chung: chỉ Phi sửa, qua PR riêng.

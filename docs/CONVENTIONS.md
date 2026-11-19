@@ -3,13 +3,13 @@
 Mục tiêu: ba người, ba AI vẫn cho ra cùng một định nghĩa, cùng một con số. Thông số số học ở `src/config.py`; file này giữ **định nghĩa và quy ước**. Thấy chỗ mơ hồ → ghi vào task, báo Phi, không tự chọn.
 
 ## 1. Dữ liệu và nhãn
-- Nguồn: UCI Steel Industry Energy Consumption (35.040 dòng 15 phút, năm 2018, 11 cột; theo đề). Không có giá trị thiếu theo đề (`NOT VERIFIED` đến khi T001 kiểm).
+- Nguồn: UCI Steel Industry Energy Consumption (35.040 dòng 15 phút, năm 2018, 11 cột; theo đề). Không có giá trị thiếu (đã kiểm T001).
 - Đích phân lớp: `Load_Type` (3 lớp). Đích hồi quy: `Usage_kWh`. Tên cột thật lấy từ tệp, sửa trong `src/config.py`.
-- Đề yêu cầu kiểm CO2 có gần như suy ra trực tiếp từ `Usage_kWh` trước khi dùng làm đầu vào. Nhóm kiểm thêm cả `Load_Type` có gần suy ra từ `Usage_kWh` hay không (`UNKNOWN`, T001). Kết quả kiểm ghi vào `docs/decisions/`; cột rò rỉ đưa vào `config.LEAKY_COLS`.
+- Đề yêu cầu kiểm CO2 có gần như suy ra trực tiếp từ `Usage_kWh` trước khi dùng làm đầu vào. Đã kiểm (T002, `results/tables/b_03`): CO2 tương quan 0,988 với `Usage_kWh` nên bị loại (`config.LEAKY_COLS`); `Load_Type` không suy ra trực tiếp từ `Usage_kWh`.
 - Dữ liệu sạch lưu `data/clean/steel_clean.csv`; dữ liệu gốc không vào git.
 
 ## 2. Chia tập, rò rỉ
-- Chia theo **thời gian** (`config.SPLIT_MODE`, `TEST_FRACTION`): phần cuối làm tập kiểm tra. Đây là đề xuất của Phi, chờ chốt.
+- Chia theo **thời gian** (`config.SPLIT_MODE`, `TEST_FRACTION`): phần cuối làm tập kiểm tra. Đã chốt (xem mục 6). Chia theo thứ tự dòng của tệp.
 - Mọi phép khớp (chuẩn hóa, PCA, chọn thuộc tính, rời rạc hóa bằng phân vị) khớp **chỉ trên tập huấn luyện**, rồi áp cho tập kiểm tra.
 - Kiểm định chéo phân tầng (`config.CV_FOLDS`) chỉ trên tập huấn luyện.
 - Ngẫu nhiên: mọi `random_state` và `rng` lấy từ `config.SEED`.

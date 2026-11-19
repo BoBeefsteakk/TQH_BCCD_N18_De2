@@ -1,0 +1,18 @@
+muc,thieu,ngoai_lai_iqr
+date,0,
+Usage_kWh,0,328.0
+Lagging_Current_Reactive.Power_kVarh,0,1059.0
+Leading_Current_Reactive_Power_kVarh,0,7759.0
+CO2(tCO2),0,437.0
+Lagging_Current_Power_Factor,0,1.0
+Leading_Current_Power_Factor,0,8327.0
+NSM,0,0.0
+WeekStatus,0,
+Day_of_week,0,
+Load_Type,0,
+hour,0,
+month,0,
+is_outlier,0,
+[tong] dong_trung_lap,0,
+[tong] dong_vo_ly,0,
+[tong] so_dong,35040,
