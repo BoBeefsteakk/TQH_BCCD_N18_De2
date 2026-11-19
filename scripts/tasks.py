@@ -30,8 +30,8 @@ OWNED = {
             "data/download_data.py", "docs/", "tasks/", ".github/", "prompts/", "scripts/",
             "TEAM.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "README.md", "requirements.txt",
             "pytest.ini", ".gitignore", ".gitattributes"],
-    "huan": ["src/viz.py", "docs/DATA_DICTIONARY.md", "docs/TESTCASES.md", "notebooks/huan_*"],
-    "viet": ["src/assoc.py", "src/clustering.py", "src/reduce.py", "notebooks/viet_*", "docs/BAOCAO_NHAP_VIET.md"],
+    "huan": ["src/viz.py", "docs/DATA_DICTIONARY.md", "docs/TESTCASES.md", "docs/BAOCAO_DINH_DANG.md", "notebooks/huan_*"],
+    "viet": ["src/assoc.py", "src/clustering.py", "src/reduce.py", "notebooks/viet_*", "docs/BAOCAO_NHAP_VIET.md", "docs/SLIDE_NHAP.md"],
 }
 # Ai cũng được ({owner} thay bằng tên người làm).
 COMMON = ["docs/trace_{owner}.md", "results/figures", "results/figures/",

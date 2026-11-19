@@ -68,8 +68,8 @@ Mục tiêu: ba người, ba AI vẫn cho ra cùng một con số. Quy tắc đ�
 | Người | Được sửa |
 |---|---|
 | Phi | `src/config.py`, `data_prep`, `models`, `evaluate`, `run_all.py`, `data/download_data.py`, `docs/`, `tasks/`, `scripts/`, `.github/`, `prompts/`, `TEAM.md`, `AGENTS.md` |
-| Huấn | `src/viz.py`, `docs/DATA_DICTIONARY.md`, `docs/TESTCASES.md`, `notebooks/huan_*` |
-| Việt | `src/assoc.py`, `clustering.py`, `reduce.py`, `notebooks/viet_*`, `docs/BAOCAO_NHAP_VIET.md` |
+| Huấn | `src/viz.py`, `docs/DATA_DICTIONARY.md`, `docs/TESTCASES.md`, `docs/BAOCAO_DINH_DANG.md`, `notebooks/huan_*` |
+| Việt | `src/assoc.py`, `clustering.py`, `reduce.py`, `notebooks/viet_*`, `docs/BAOCAO_NHAP_VIET.md`, `docs/SLIDE_NHAP.md` |
 
 Cần sửa file người khác: ghi vào task, nhắn chủ file.
 

@@ -18,7 +18,7 @@ Bản làm việc; cuối kỳ chép sang báo cáo. Bảng ca kiểm thử (Ph�
 |---|---|---|---|
 | 1 | Nguyễn Bảo Phi | 23810310017 | Nhóm trưởng; dữ liệu, tiền xử lý, mô hình, đánh giá |
 | 2 | Đỗ Minh Huấn | 23810310075 | Từ điển dữ liệu, trực quan hóa, kiểm thử |
-| 3 | Nguyễn Serov Trọng Việt | 23810310019 | Luật kết hợp, phân cụm, giảm chiều, so sánh có/không giảm chiều, Chương 3 báo cáo |
+| 3 | Nguyễn Serov Trọng Việt | 23810310019 | Luật kết hợp, phân cụm, giảm chiều, so sánh có/không giảm chiều, Chương 3 và 6 báo cáo, slide |
 
 ## Phụ lục B — Kế hoạch, phân công, rủi ro
 Ngày thi: **10/01/2027** (Phi báo). Ngày giao đề và hạn nộp thật: **UNKNOWN**; các mốc tuần dưới đây là tự phân của nhóm, tính lùi từ ngày thi, chưa phải hạn chính thức.

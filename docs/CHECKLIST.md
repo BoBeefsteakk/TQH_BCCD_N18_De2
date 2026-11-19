@@ -36,8 +36,8 @@ Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1
 | 3.4 | Mọi biểu đồ (≥ 8, ≥ 4 loại) đủ tiêu đề, nhãn trục, đơn vị, một nhận xét | 0,5 | Huấn | ☐ |
 | 6.1 | Kế hoạch, phân công, nhật ký tuần, bảng rủi ro cập nhật | 0,75 | Phi | ☐ |
 | 6.2 | Bảng tự đánh giá đóng góp (Phụ lục C), cả nhóm xác nhận; lịch sử git đúng người | 0,75 (cá nhân) | Cả nhóm | ☐ |
-| 7.1 | Báo cáo 20–30 trang (Times New Roman 13, giãn 1,3), có trích dẫn; PDF và DOCX | 0,5 | Cả nhóm | ☐ |
-| 7.2 | Slide 10–12 trang; demo chạy được (`python run_all.py` từ dữ liệu gốc) | 0,25 | Cả nhóm | ☐ |
+| 7.1 | Báo cáo 20–30 trang (Times New Roman 13, giãn 1,3), có trích dẫn; PDF và DOCX (Huấn: danh mục, tài liệu tham khảo, định dạng, T014) | 0,5 | Cả nhóm | ☐ |
+| 7.2 | Slide 10–12 trang; demo chạy được (`python run_all.py` từ dữ liệu gốc) (Việt soạn dàn ý và kịch bản, T013) | 0,25 | Cả nhóm | ☐ |
 | — | Tệp nén `D18CNPM1_Nhom18_De2.zip`: báo cáo, mã + README + thư viện, dữ liệu sạch + từ điển, slide, hồ sơ nhóm | — | Phi | ☐ |
 
 ## P5 — buổi thi

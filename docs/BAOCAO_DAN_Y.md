@@ -36,7 +36,7 @@ Trang bìa: tên trường, khoa, học phần (Phân tích và trực quan hóa
 | 3. Thiết kế sơ bộ | 3 | 1.1 | Việt (khung của Phi, Phi chốt) |
 | 4. Cài đặt | 9 | 2.2, 2.3, 3.1–3.4, 4.1–4.4 | Phi, Huấn, Việt |
 | 5. Kiểm thử và đánh giá | 4 | 5.1, 5.2, 5.3 | Phi, Huấn |
-| 6. Kết luận | 1 | 5.3 | Phi |
+| 6. Kết luận | 1 | 5.3 | Việt |
 | 7. Quản lý công việc nhóm | 2 | 6.1, 6.2 | Phi |
 | **Tổng** | **26** | | |
 
@@ -114,7 +114,7 @@ Hình/bảng liên quan luật kết hợp và mô hình xếp ở 4.3, 4.4, 4.5
 - Hình/bảng: Bảng 5.1 so sánh mô hình; Bảng 5.2 chỉ số từng lớp; Bảng 5.3 cặp lớp nhầm nhiều nhất; Bảng 5.4 trước/sau điều chỉnh.
 
 ## Chương 6. Kết luận (1 trang; mã 5.3)
-**Người viết: Phi.** Trả lời từng câu hỏi phân tích bằng số từ `results/`; hạn chế (một nhà máy, một năm, rò rỉ nếu có); hướng phát triển (Random Forest, dự báo giờ kế tiếp, khuyến nghị dịch chuyển phụ tải: gợi ý mở rộng của đề, không bắt buộc với nhóm 3).
+**Người viết: Việt** (chuyển từ Phi 19/11/2026, T012; khung ở `docs/BAOCAO_NHAP_PHI.md`). Trả lời từng câu hỏi phân tích bằng số từ `results/`; hạn chế (một nhà máy, một năm, rò rỉ nếu có); hướng phát triển (Random Forest, dự báo giờ kế tiếp, khuyến nghị dịch chuyển phụ tải: gợi ý mở rộng của đề, không bắt buộc với nhóm 3).
 
 ## Chương 7. Quản lý công việc nhóm (2 trang; mã 6.1, 6.2)
 **Người viết: Phi (cả nhóm xác nhận).** Điều kiện được điểm: kế hoạch rõ, phân công hợp lý, theo dõi tiến độ, quản lý rủi ro, minh chứng đóng góp cá nhân rõ.
