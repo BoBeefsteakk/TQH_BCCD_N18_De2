@@ -27,6 +27,7 @@ Bảy chương theo yêu cầu của đề: […]
 ---
 
 ## Chương 3. Thiết kế sơ bộ
+> Từ 19/11/2026 Việt viết Chương 3 (T011) dựa trên khung này; Phi chốt phần quy trình ở 3.1.
 
 ### 3.1 Quy trình phân tích: CRISP-DM
 > Đề xuất của bản nháp, chờ Phi chốt (đề cho chọn CRISP-DM, KDD hoặc SEMMA; chưa có quyết định ghi ở `docs/decisions/`).

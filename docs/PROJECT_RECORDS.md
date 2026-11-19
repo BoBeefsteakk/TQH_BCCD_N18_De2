@@ -18,7 +18,7 @@ Bản làm việc; cuối kỳ chép sang báo cáo. Bảng ca kiểm thử (Ph�
 |---|---|---|---|
 | 1 | Nguyễn Bảo Phi | 23810310017 | Nhóm trưởng; dữ liệu, tiền xử lý, mô hình, đánh giá |
 | 2 | Đỗ Minh Huấn | 23810310075 | Từ điển dữ liệu, trực quan hóa, kiểm thử |
-| 3 | Nguyễn Serov Trọng Việt | 23810310019 | Luật kết hợp, phân cụm, giảm chiều |
+| 3 | Nguyễn Serov Trọng Việt | 23810310019 | Luật kết hợp, phân cụm, giảm chiều, so sánh có/không giảm chiều, Chương 3 báo cáo |
 
 ## Phụ lục B — Kế hoạch, phân công, rủi ro
 Ngày thi: **10/01/2027** (Phi báo). Ngày giao đề và hạn nộp thật: **UNKNOWN**; các mốc tuần dưới đây là tự phân của nhóm, tính lùi từ ngày thi, chưa phải hạn chính thức.
@@ -41,7 +41,7 @@ Ngày thi: **10/01/2027** (Phi báo). Ngày giao đề và hạn nộp thật: *
 ## Nhật ký tiến độ hằng tuần
 | Tuần | Đã làm | Chưa xong | Ghi chú |
 |---|---|---|---|
-| 18/11/2026 (tuần 1 của nhóm) | T001, T002 (dữ liệu, làm sạch, rò rỉ, chia tập); T007 phần chính (3 mô hình phân lớp, 2 hồi quy, bản bỏ cột vật lý, phân tích lỗi, thử điều chỉnh); `run_all.py`; bản nháp báo cáo phần Phi | So sánh có/không giảm chiều (chờ T006); hình và từ điển dữ liệu (Huấn); luật kết hợp, giảm chiều, phân cụm (Việt) | Tuần tự đặt, chưa phải tuần chính thức |
+| 18/11/2026 (tuần 1 của nhóm) | T001, T002 (dữ liệu, làm sạch, rò rỉ, chia tập); T007 phần chính (3 mô hình phân lớp, 2 hồi quy, bản bỏ cột vật lý, phân tích lỗi, thử điều chỉnh); `run_all.py`; bản nháp báo cáo phần Phi | So sánh có/không giảm chiều (chuyển cho Việt, T010); hình và từ điển dữ liệu (Huấn); luật kết hợp, giảm chiều, phân cụm (Việt) | Tuần tự đặt, chưa phải tuần chính thức |
 
 ## Phụ lục C — Bảng tự đánh giá đóng góp
 Tổng tỷ lệ bằng 100%; bảng chỉ có giá trị khi mọi thành viên xác nhận.

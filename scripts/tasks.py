@@ -31,7 +31,7 @@ OWNED = {
             "TEAM.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "README.md", "requirements.txt",
             "pytest.ini", ".gitignore", ".gitattributes"],
     "huan": ["src/viz.py", "docs/DATA_DICTIONARY.md", "docs/TESTCASES.md", "notebooks/huan_*"],
-    "viet": ["src/assoc.py", "src/clustering.py", "src/reduce.py", "notebooks/viet_*"],
+    "viet": ["src/assoc.py", "src/clustering.py", "src/reduce.py", "notebooks/viet_*", "docs/BAOCAO_NHAP_VIET.md"],
 }
 # Ai cũng được ({owner} thay bằng tên người làm).
 COMMON = ["docs/trace_{owner}.md", "results/figures", "results/figures/",

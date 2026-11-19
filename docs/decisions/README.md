@@ -19,3 +19,4 @@
 | 18/11/2026 | `data/clean/*.csv` không vào git, nộp bằng zip | Tệp > 1 MB bị CI chặn | `.gitignore` |
 | 18/11/2026 | Hồi quy giữ công suất phản kháng và hệ số công suất làm đầu vào, ghi rõ trong báo cáo | Phi quyết; đã kiểm Usage_kWh = Q·PF/√(1−PF²) (tương quan 0,9999994) | R² 0,999 là tái tạo công thức, nêu ở kết quả và hạn chế; so sánh thêm bản bỏ hai cột nếu còn thời gian |
 | 18/11/2026 | Thêm bản hồi quy bỏ 4 cột công suất phản kháng và hệ số công suất (`REG_NO_PHYSICS_COLS`, bảng g_04) | Phi yêu cầu; để có con số dự báo không dựa vào công thức | Báo cáo nêu cả hai bản: cây R² 0,999 (có công thức) và 0,665 (không) |
+| 19/11/2026 | Chuyển từ Phi sang Việt: so sánh có/không giảm chiều (T010) và viết Chương 3 báo cáo (T011); 1.1 và 4.2 thành điểm chung Phi và Việt | Phi nặng nhất (khoảng 15 trang, 3,75 điểm riêng), Việt nhẹ nhất (khoảng 3 trang) | Phi còn khoảng 11 trang; Việt khoảng 7; `scripts/tasks.py` OWNED, `TEAM.md`, `CHECKLIST.md`, `BAOCAO_DAN_Y.md` |

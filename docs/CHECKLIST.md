@@ -5,7 +5,7 @@ Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1
 ## P1 — hết tuần 1: lập nhóm, chọn đề, khảo sát dữ liệu (khối A)
 | Mã | Việc | Điểm | Người chính | |
 |---|---|---|---|---|
-| 1.1 | Bối cảnh, người dùng, ≥ 3 câu hỏi phân tích; chọn CRISP-DM/KDD/SEMMA và giải thích áp dụng | 0,5 | Phi | ☐ |
+| 1.1 | Bối cảnh, người dùng, ≥ 3 câu hỏi phân tích (Phi, Chương 1); chọn CRISP-DM/KDD/SEMMA và giải thích áp dụng (Việt viết Chương 3, Phi chốt) | 0,5 | Phi, Việt | ☐ |
 | — | Phiếu đăng ký (Phụ lục A), kế hoạch và rủi ro (Phụ lục B) vào `docs/PROJECT_RECORDS.md` | (6.1) | Phi | ☐ |
 | — | Tải dữ liệu, điền size và SHA-256 vào `src/config.py`, đối chiếu tên cột thật | — | Phi | ☐ |
 
@@ -22,7 +22,7 @@ Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1
 ## P3 — hết tuần 3: khối E, F, G (nộp báo cáo tiến độ 2 kèm bản nháp)
 | Mã | Việc | Điểm | Người chính | |
 |---|---|---|---|---|
-| 4.2 | Khối E: phân lớp Load_Type ≥ 3 mô hình; hồi quy Usage_kWh; kiểm định chéo; so sánh có và không giảm chiều | 0,5 | Phi | ☐ |
+| 4.2 | Khối E: phân lớp Load_Type ≥ 3 mô hình; hồi quy Usage_kWh; kiểm định chéo; so sánh có và không giảm chiều (Phi: mô hình; Việt: so sánh giảm chiều, T010) | 0,5 | Phi, Việt | ☐ |
 | 4.3 | Khối F: k-means, chọn k bằng khuỷu tay và silhouette, đối chiếu cụm với Load_Type | 0,5 | Việt | ☐ |
 | 4.4 | Chia tập hợp lý (theo thời gian), tránh rò rỉ, chỉnh tham số | 0,5 | Phi | ☐ |
 | 3.3 | Trực quan hóa kết quả mô hình: ma trận nhầm lẫn, cụm, độ quan trọng thuộc tính hoặc hình cây | 0,5 | Huấn | ☐ |
