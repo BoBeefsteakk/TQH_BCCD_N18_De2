@@ -5,7 +5,7 @@ phase: P2
 checklist: 4.1
 owner: viet
 status: todo
-due: TBD
+due: 04/12/2026
 files: src/assoc.py
 depends: T002
 ---

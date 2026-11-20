@@ -5,7 +5,7 @@ phase: P2
 checklist: 2.3
 owner: viet
 status: todo
-due: TBD
+due: 27/11/2026
 files: src/reduce.py
 depends: T002
 ---

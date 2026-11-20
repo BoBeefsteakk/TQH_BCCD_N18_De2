@@ -5,7 +5,7 @@ phase: P4
 checklist: 7.2
 owner: viet
 status: todo
-due: TBD
+due: 30/12/2026
 files: docs/SLIDE_NHAP.md
 depends: T007
 ---

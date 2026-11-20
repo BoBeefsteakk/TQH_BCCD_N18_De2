@@ -1,6 +1,6 @@
 # CHECKLIST — việc cố định theo phase (chỉ Phi sửa; Phi đổi ☐ → ☑ khi có bằng chứng)
 
-Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1,5). Việc linh động nằm ở `tasks/`. Hạn: ngày giao đề và ngày thi chưa biết (`UNKNOWN`), nên hạn ghi theo mốc tuần của đề; Phi điền ngày thật khi có.
+Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1,5). Việc linh động nằm ở `tasks/`. Hạn: ngày giao đề và hạn nộp thật chưa biết (`UNKNOWN`); ngày thi 10/01/2027. Hạn nội bộ của từng task do nhóm tự đặt ngày 20/11/2026, xem mốc M0 đến M8 ở `docs/PROJECT_RECORDS.md` Phụ lục B; Phi sửa khi có hạn thật.
 
 ## P1 — hết tuần 1: lập nhóm, chọn đề, khảo sát dữ liệu (khối A)
 | Mã | Việc | Điểm | Người chính | |

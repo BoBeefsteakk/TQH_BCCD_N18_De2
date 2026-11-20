@@ -5,7 +5,7 @@ phase: P4
 checklist: 7.1
 owner: huan
 status: todo
-due: TBD
+due: 31/12/2026
 files: docs/BAOCAO_DINH_DANG.md
 depends: T004
 ---
