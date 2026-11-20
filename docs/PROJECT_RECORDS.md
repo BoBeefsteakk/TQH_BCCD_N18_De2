@@ -21,14 +21,22 @@ Bản làm việc; cuối kỳ chép sang báo cáo. Bảng ca kiểm thử (Ph�
 | 3 | Nguyễn Serov Trọng Việt | 23810310019 | Luật kết hợp, phân cụm, giảm chiều, so sánh có/không giảm chiều, Chương 3 và 6 báo cáo, slide |
 
 ## Phụ lục B — Kế hoạch, phân công, rủi ro
-Ngày thi: **10/01/2027** (Phi báo). Ngày giao đề và hạn nộp thật: **UNKNOWN**; các mốc tuần dưới đây là tự phân của nhóm, tính lùi từ ngày thi, chưa phải hạn chính thức.
+Ngày thi: **10/01/2027** (Phi báo). Ngày giao đề và hạn nộp thật: **UNKNOWN**. Lịch dưới đây do nhóm tự đặt (19–20/11/2026), tính lùi từ ngày thi, chưa phải hạn chính thức; hạn nộp tệp nén theo đề là "trước buổi báo cáo 2 ngày", nếu buổi đó là 10/01 thì 08/01 (UNKNOWN). Khung thời gian: khoảng 6 tuần làm việc đến 04/01/2027. Ước lượng khối lượng còn lại (giờ, tự đoán): Phi khoảng 24, Huấn khoảng 26, Việt khoảng 32, tức mỗi người 4 đến 5,5 giờ mỗi tuần. Chưa tính lịch học và thi môn khác của từng người (UNKNOWN, báo Phi khi có).
 
-| Tuần | Công việc | Người phụ trách | Sản phẩm | Trạng thái |
-|---|---|---|---|---|
-| 1 | Khối A, tải dữ liệu, phiếu đăng ký | Phi | Phụ lục A, B | todo |
-| 2 | Khối B, C, D | Phi, Huấn, Việt | Báo cáo tiến độ 1 + notebook | todo |
-| 3 | Khối E, F, G | Phi, Việt, Huấn | Báo cáo tiến độ 2 + bản nháp | todo |
-| 4 | Hoàn thiện, slide, chạy thử demo | Cả nhóm | Tệp nén cuối | todo |
+| Mốc (cuối tuần) | Ngày | Cần xong | Sản phẩm |
+|---|---|---|---|
+| M0 | 20/11/2026 | Khung repo, T001, T002, T007, hồ sơ Phase 1 (đã xong) | Phụ lục A, B bản đầu; bản nháp báo cáo phần Phi |
+| M1 | 27/11/2026 | T003 (Huấn), T006 (Việt) | Từ điển dữ liệu; PCA, xếp hạng thuộc tính (mở khóa T010) |
+| M2 | 04/12/2026 | T004 (Huấn), T005, T011 (Việt); Phi chốt Chương 1, 4.1 | Báo cáo tiến độ 1 (khối B, C, D: 2.1 đến 4.1) + notebook |
+| M3 | 11/12/2026 | T008, T010 (Việt); Phi chốt 4.4 | Phân cụm; so sánh có/không giảm chiều |
+| M4 | 18/12/2026 | T009 (Huấn); Phi chốt 5.2, 5.3 | Báo cáo tiến độ 2 (khối E, F, G) + bản nháp toàn báo cáo |
+| M5 | 23/12 đến 31/12/2026 | T012 (23/12), T013 (30/12), T014 (31/12); mọi người viết xong phần mình trước 28/12 | Chương 6; dàn ý slide; danh mục, tài liệu tham khảo |
+| M6 | 04/01/2027 | Chốt báo cáo (Phi ghép Google Docs, cả nhóm đọc); chạy `run_all.py` từ dữ liệu gốc | Báo cáo PDF, DOCX; bảng tự đánh giá (Phụ lục C) xác nhận |
+| M7 | 05/01/2027 | Tệp nén `D18CNPM1_Nhom18_De2.zip` | Hạn nội bộ nộp, sớm 3 ngày so với 08/01 |
+| M8 | 06/01 đến 09/01/2027 | Dự phòng, slide, tập trình bày 10 phút và vấn đáp | Mỗi người trả lời được phần mình và phần chung |
+| Thi | 10/01/2027 | Vấn đáp (7.3) | |
+
+Phi: Chương 1, 4.1, 4.4, 5.2, 5.3, 7, hồ sơ, ghép báo cáo, đóng gói: chưa tạo thành task, theo các mốc M2 đến M7.
 
 | Rủi ro | Khả năng | Mức ảnh hưởng | Biện pháp | Người theo dõi |
 |---|---|---|---|---|

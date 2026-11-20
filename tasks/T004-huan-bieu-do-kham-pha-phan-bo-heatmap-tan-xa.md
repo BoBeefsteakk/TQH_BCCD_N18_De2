@@ -5,7 +5,7 @@ phase: P2
 checklist: 3.1,3.2
 owner: huan
 status: todo
-due: TBD
+due: 04/12/2026
 files: src/viz.py,notebooks/huan_eda.ipynb
 depends: T002
 ---

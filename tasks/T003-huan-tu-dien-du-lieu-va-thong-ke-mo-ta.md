@@ -5,7 +5,7 @@ phase: P2
 checklist: 2.1
 owner: huan
 status: todo
-due: TBD
+due: 27/11/2026
 files: docs/DATA_DICTIONARY.md
 depends: T001
 ---

@@ -5,7 +5,7 @@ phase: P2
 checklist: 1.1
 owner: viet
 status: todo
-due: TBD
+due: 04/12/2026
 files: docs/BAOCAO_NHAP_VIET.md
 depends: T002
 ---

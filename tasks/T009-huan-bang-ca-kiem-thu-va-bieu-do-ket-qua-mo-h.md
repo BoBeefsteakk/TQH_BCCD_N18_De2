@@ -5,7 +5,7 @@ phase: P3
 checklist: 5.1,3.3
 owner: huan
 status: todo
-due: TBD
+due: 18/12/2026
 files: docs/TESTCASES.md,src/viz.py
 depends: T007
 ---

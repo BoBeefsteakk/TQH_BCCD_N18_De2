@@ -5,7 +5,7 @@ phase: P4
 checklist: 5.3
 owner: viet
 status: todo
-due: TBD
+due: 23/12/2026
 files: docs/BAOCAO_NHAP_VIET.md
 depends: T005,T007,T008,T010
 ---
