@@ -128,6 +128,20 @@ def lag_feature_names() -> list[str]:
     return [f"{c}_{suf}" for c in config.LAG_COLS for suf in (f"tb{config.LAG_WINDOW}", "hieu1")]
 
 
+def class_share(df: pd.DataFrame, by: str) -> pd.DataFrame:
+    """Tỉ lệ từng lớp Load_Type theo nhóm `by`: 'hourbin' (khung giờ theo config.HOUR_BIN_EDGES), 'WeekStatus' hoặc
+    'Day_of_week'. Mỗi hàng cộng 1 (cột so_mau là số dòng của nhóm). Mô tả toàn năm, không dùng làm đặc trưng."""
+    edges = list(config.HOUR_BIN_EDGES)
+    if by == "hourbin":
+        labels = [f"{a:02d}-{b:02d}h" for a, b in zip(edges[:-1], edges[1:])]
+        group = pd.cut(df[HOUR_COL], bins=edges, right=False, labels=labels)
+    else:
+        group = df[by]
+    share = pd.crosstab(group, df[config.TARGET_CLS], normalize="index")[config.LOAD_CLASSES]
+    share["so_mau"] = pd.crosstab(group, df[config.TARGET_CLS]).sum(axis=1)
+    return share.reset_index().rename(columns={share.index.name or "row_0": "nhom"})
+
+
 def save_clean(df: pd.DataFrame) -> None:
     """Ghi dữ liệu sạch ra config.CLEAN_DIR / config.CLEAN_DATA_NAME."""
     config.CLEAN_DIR.mkdir(parents=True, exist_ok=True)

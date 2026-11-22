@@ -115,3 +115,11 @@ def test_hour_not_used_as_feature_but_kept_in_data():
     assert "hour" in out.columns
     for task in ("cls", "reg", "reg_no_physics"):
         assert "hour" not in data_prep.make_features(train, test, task)[0].columns
+
+
+def test_class_share_rows_sum_to_one():
+    out = data_prep.clean(_fake(400))
+    for by in ("hourbin", "WeekStatus", "Day_of_week"):
+        t = data_prep.class_share(out, by)
+        assert (t[config.LOAD_CLASSES].sum(axis=1).round(9) == 1.0).all()
+        assert t["so_mau"].sum() == len(out)
