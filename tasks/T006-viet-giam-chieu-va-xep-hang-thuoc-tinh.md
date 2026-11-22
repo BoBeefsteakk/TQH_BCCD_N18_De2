@@ -4,7 +4,7 @@ title: Giảm chiều và xếp hạng thuộc tính
 phase: P2
 checklist: 2.3
 owner: viet
-status: review
+status: done
 due: 27/11/2026
 files: src/reduce.py
 depends: T002
@@ -43,3 +43,5 @@ PCA khớp trên train (config.PCA_VARIANCE) và rank_features; để Phi so sá
 **Còn dở, cần Phi:**
 - Chưa sinh bảng vào `results/tables/` vì tên bảng phải nằm trong `src/config.py` và nối vào `run_all.py` (file của Phi). Đề xuất: `b_04_pca_phuong_sai.csv` (từ `pca_summary`), `b_05_xep_hang_thuoc_tinh.csv` (từ `rank_features`, cột thêm `dich`). Các số ở trên vì vậy chưa dùng được cho báo cáo cho tới khi có bảng.
 - NSM và hour trùng thông tin (hour = NSM chia 3600), cả hai đều đứng đầu; giữ hay bỏ một cột là quyết định của Phi.
+
+**Cập nhật của Phi (22/11/2026):** đã kiểm lại số của Việt, khớp với bản chạy tại thời điểm đó (PCA 9 thành phần, lũy kế 0,9765). Phi bỏ cột `hour` khỏi đặc trưng vì trùng `NSM` (hour = NSM chia 3600), nên số hiện hành khác chút: 14 cột sau one-hot, PCA vẫn 9 thành phần, lũy kế 0,9754; xếp hạng Load_Type: NSM 0,627, hệ số công suất trễ 0,406, công suất phản kháng trễ 0,328. Dùng bảng `b_04`, `b_05` do `run_all.py` sinh (đã nối), không dùng số tay ở trên.

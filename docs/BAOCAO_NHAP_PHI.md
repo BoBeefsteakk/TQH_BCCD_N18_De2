@@ -59,12 +59,12 @@ Chia theo thời gian: 80% đầu (28.032 dòng, đến 19/10/2018) huấn luy�
 - **Thứ tự thời gian:** mốc 00:00 của mỗi ngày nằm cuối khối 96 dòng của ngày đó nhưng chuỗi ngày ghi ngày D. Nhóm chia tập theo thứ tự dòng. Mốc đó thuộc ngày D hay D+1: **UNKNOWN** (365 dòng, khoảng 1%).
 - **Kiểm rò rỉ** [b_03]: CO2 tương quan Pearson 0,988 với `Usage_kWh` nên bị loại khỏi đặc trưng. `Load_Type` không suy ra trực tiếp từ `Usage_kWh`: cây chỉ dùng `Usage_kWh` đạt accuracy 0,648 trên tập kiểm tra.
 - **Phát hiện thêm (quan trọng):** `Usage_kWh` trùng công thức P = Q·PF/√(1−PF²) với Q là công suất phản kháng trễ và PF là hệ số công suất trễ (0–1): tương quan 0,9999994, sai số tương đối trung vị khoảng 1e-4, trên 27.002 dòng dùng được. Hệ quả ở 4.4.
-- **Đặc trưng:** giờ (từ chuỗi ngày), `NSM` (giây từ nửa đêm), 4 cột công suất phản kháng và hệ số công suất, loại ngày và thứ (one-hot). Không dùng tháng. Phân lớp không dùng `Usage_kWh`; hồi quy không dùng `Load_Type` (nhãn dựng từ mức tiêu thụ).
+- **Đặc trưng:** `NSM` (giây từ nửa đêm), 4 cột công suất phản kháng và hệ số công suất, loại ngày và thứ (one-hot). Không dùng tháng và không dùng cột giờ: giờ bằng `NSM` chia 3600 (kiểm: trùng 100%), nên trùng thông tin; bỏ giờ đổi F1 macro tối đa 0,002 (quyết định 22/11/2026). Cột giờ vẫn có trong dữ liệu sạch cho biểu đồ và luật kết hợp. Phân lớp không dùng `Usage_kWh`; hồi quy không dùng `Load_Type` (nhãn dựng từ mức tiêu thụ).
 - **Giảm chiều:** […] (Việt, T006).
 
 ## 4.4 Phân lớp và dự đoán
 - **Cài đặt:** mỗi mô hình chọn tham số bằng GridSearchCV theo lưới trong `src/config.py`, 5 lần phân tầng, chấm bằng F1 macro (RMSE cho hồi quy). Tham số chọn [e_01, e_02, e_03]: cây `max_depth` 10; k-NN 11 láng giềng; hồi quy logistic C = 0,1; cây hồi quy không giới hạn độ sâu.
-- **Ma trận nhầm lẫn và độ quan trọng** [g_02, g_07]: hình do Huấn vẽ từ bảng. Cây phân lớp dựa chủ yếu vào `NSM` (0,72) và công suất phản kháng trễ (0,13).
+- **Ma trận nhầm lẫn và độ quan trọng** [g_02, g_07]: hình do Huấn vẽ từ bảng. Cây phân lớp dựa chủ yếu vào `NSM` (0,73) và công suất phản kháng trễ (0,13).
 - **So sánh có và không giảm chiều:** […] (đợi T006).
 
 ---
@@ -76,43 +76,43 @@ Chia theo thời gian: 80% đầu (28.032 dòng, đến 19/10/2018) huấn luy�
 
 | Mô hình | Accuracy | F1 macro | F1 Light | F1 Medium | F1 Maximum | F1 macro CV (train) |
 |---|---|---|---|---|---|---|
-| Cây quyết định | 0,746 | 0,658 | 0,961 | 0,562 | 0,452 | 0,866 |
-| k-NN | 0,736 | 0,649 | 0,939 | 0,548 | 0,460 | 0,814 |
-| Hồi quy logistic | 0,684 | 0,602 | 0,905 | 0,475 | 0,426 | 0,728 |
+| Cây quyết định | 0,746 | 0,657 | 0,963 | 0,559 | 0,450 | 0,867 |
+| k-NN | 0,732 | 0,647 | 0,935 | 0,546 | 0,459 | 0,809 |
+| Hồi quy logistic | 0,684 | 0,602 | 0,904 | 0,474 | 0,427 | 0,728 |
 
 **Hồi quy** `Usage_kWh` (kWh) [g_03, g_04]. Mốc cơ sở: đoán bằng trung bình huấn luyện, RMSE 31,49.
 
 | Đầu vào | Mô hình | MAE | RMSE | R² |
 |---|---|---|---|---|
-| Đủ cột | Cây | 0,44 | 1,00 | 0,999 |
-| Đủ cột | Tuyến tính | 6,89 | 9,33 | 0,912 |
+| Đủ cột | Cây | 0,46 | 1,04 | 0,999 |
+| Đủ cột | Tuyến tính | 6,88 | 9,33 | 0,912 |
 | Bỏ 4 cột công suất phản kháng và hệ số công suất | Cây | 10,48 | 18,17 | 0,665 |
 | Bỏ 4 cột đó | Tuyến tính | 23,78 | 29,37 | 0,123 |
 
 Diễn giải: R² 0,999 của bản đủ cột là tái tạo công thức vật lý ở 4.1, không phải năng lực dự báo; năng lực dự báo thật là bản bỏ cột (cây R² 0,665, tuyến tính gần như không hơn mốc trung bình). Báo cáo phải nêu cả hai.
 
 ### 5.3 Phân tích lỗi và điều chỉnh
-**Lớp nào nhầm lớp nào** [g_02]: Medium và Maximum nhầm nhau nhiều nhất. Với cây: 763 mẫu Medium bị đoán Maximum (40,4% lớp Medium) và 734 mẫu Maximum bị đoán Medium (51,8% lớp Maximum). Lớp Light gần như không nhầm sang Maximum.
+**Lớp nào nhầm lớp nào** [g_02]: Medium và Maximum nhầm nhau nhiều nhất. Với cây: 775 mẫu Medium bị đoán Maximum (41,0% lớp Medium) và 733 mẫu Maximum bị đoán Medium (51,8% lớp Maximum). Lớp Light gần như không nhầm sang Maximum.
 
-**Lỗi tập trung ở giờ nào** [g_05, g_06, cây quyết định, mô hình tốt nhất theo CV]: từ 0h đến 11h độ chính xác 99–100%; từ 13h đến 19h chỉ 24–46% (thấp nhất 18h: 23,6%); 20h và 21h hồi lại 73% và 89%; 22h xuống 39,7%. Ngày thường 72,5%, cuối tuần 79,5%. Nghĩa là mô hình chỉ khó phân biệt Medium và Maximum ở buổi chiều và tối, khi tải vận hành cao.
+**Lỗi tập trung ở giờ nào** [g_05, g_06, cây quyết định, mô hình tốt nhất theo CV]: từ 0h đến 11h độ chính xác 99–100%; từ 13h đến 19h chỉ 24–46% (thấp nhất 18h: 23,6%); 20h và 21h hồi lại 73% và 89%; 22h xuống 40,8%. Ngày thường 72,5%, cuối tuần 79,5%. Nghĩa là mô hình chỉ khó phân biệt Medium và Maximum ở buổi chiều và tối, khi tải vận hành cao.
 
-**Nguyên nhân (giả thuyết, chưa chứng minh):** (a) hai lớp này chênh nhau ở mức tải mà đại lượng đo không tách được; (b) tập kiểm tra là cuối năm, khác giai đoạn huấn luyện: F1 macro CV của cây là 0,866 nhưng trên tập kiểm tra chỉ 0,658, tức CV trong cùng giai đoạn lạc quan so với dự báo cho giai đoạn sau; (c) cách gán nhãn `Load_Type` không biết (**UNKNOWN**).
+**Nguyên nhân (giả thuyết, chưa chứng minh):** (a) hai lớp này chênh nhau ở mức tải mà đại lượng đo không tách được; (b) tập kiểm tra là cuối năm, khác giai đoạn huấn luyện: F1 macro CV của cây là 0,867 nhưng trên tập kiểm tra chỉ 0,657, tức CV trong cùng giai đoạn lạc quan so với dự báo cho giai đoạn sau; (c) cách gán nhãn `Load_Type` không biết (**UNKNOWN**).
 
 **Điều chỉnh đã thử** [g_09, cây quyết định, cùng tập kiểm tra]:
 
 | Biến thể | F1 macro CV | F1 macro kiểm tra | Accuracy kiểm tra |
 |---|---|---|---|
-| Gốc | 0,866 | 0,658 | 0,746 |
+| Gốc | 0,867 | 0,657 | 0,746 |
 | Trọng số lớp cân bằng | 0,883 | 0,644 | 0,728 |
 | Đặc trưng trễ (trung bình và hiệu trong 1 giờ gần nhất) | 0,862 | 0,656 | 0,748 |
-| Cả hai | 0,890 | 0,653 | 0,741 |
+| Cả hai | 0,889 | 0,653 | 0,741 |
 
 Kết luận: không điều chỉnh nào cải thiện trên giai đoạn sau, dù CV tăng ở hai biến thể có trọng số lớp. Báo cáo ghi trung thực kết quả này, không chọn biến thể theo điểm kiểm tra. Hướng chưa thử (**đề xuất**): Random Forest, thêm đặc trưng lịch (ngày lễ), chia kiểm tra theo nhiều đoạn thời gian để đỡ phụ thuộc một mùa.
 
 **Trả lời câu hỏi phân tích**
-- Câu 1: […] (cần hình 4.4 của Huấn). Từ cây phân lớp: thời điểm trong ngày (`NSM`) là đặc trưng quan trọng nhất (0,72).
-- Câu 2: mô hình tốt nhất (cây) đạt F1 macro 0,658 và accuracy 0,746 trên cuối năm, cao hơn mốc 0,529; nhận biết tốt lớp Light (F1 0,96), kém ở Medium và Maximum.
-- Câu 3: khi bỏ công thức vật lý, `NSM` (0,55), giờ (0,22) và loại ngày (0,21) là các thuộc tính chính [g_08]; khi có công suất phản kháng và hệ số công suất thì chúng quyết định gần như hoàn toàn (xem 4.1).
+- Câu 1: […] (cần hình 4.4 của Huấn). Từ cây phân lớp: thời điểm trong ngày (`NSM`) là đặc trưng quan trọng nhất (0,73).
+- Câu 2: mô hình tốt nhất (cây) đạt F1 macro 0,657 và accuracy 0,746 trên cuối năm, cao hơn mốc 0,529; nhận biết tốt lớp Light (F1 0,96), kém ở Medium và Maximum.
+- Câu 3: khi bỏ công thức vật lý, `NSM` (0,77) và loại ngày (0,21) là các thuộc tính chính [g_08]; khi có công suất phản kháng và hệ số công suất thì chúng quyết định gần như hoàn toàn (xem 4.1).
 
 ---
 

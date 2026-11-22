@@ -9,7 +9,7 @@ import sys
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 
-from src import config, data_prep, evaluate, models
+from src import config, data_prep, evaluate, models, reduce
 
 
 def _save(df: pd.DataFrame, name: str) -> None:
@@ -84,6 +84,18 @@ def stage_models(clean: pd.DataFrame) -> None:
     _save(evaluate.feature_importance_table(regs_np["decision_tree"], list(xn_tr.columns)), config.TBL_IMP_REG)
 
 
+def stage_reduce(clean: pd.DataFrame) -> None:
+    """Giảm chiều và xếp hạng thuộc tính (T006, Việt): PCA khớp trên train; thông tin tương hỗ với hai đích."""
+    train, test = data_prep.time_split(clean)
+    x_train, x_test = data_prep.make_features(train, test, "cls")
+    _, _, pca_model = reduce.pca_reduce(x_train, x_test)
+    _save(reduce.pca_summary(pca_model), config.TBL_PCA_VARIANCE)
+    x_reg, _ = data_prep.make_features(train, test, "reg")
+    ranks = [reduce.rank_features(x_train, train[config.TARGET_CLS]).assign(dich=config.TARGET_CLS),
+             reduce.rank_features(x_reg, train[config.TARGET_REG]).assign(dich=config.TARGET_REG)]
+    _save(pd.concat(ranks, ignore_index=True), config.TBL_FEATURE_RANK)
+
+
 def stage_adjust(clean: pd.DataFrame) -> None:
     """Thử điều chỉnh phân lớp (cây quyết định): trọng số lớp, đặc trưng trễ, cả hai. Báo trước/sau trên cùng test."""
     lagged = data_prep.add_lag_features(clean)
@@ -109,6 +121,7 @@ def stage_adjust(clean: pd.DataFrame) -> None:
 def main() -> int:
     clean = stage_b()
     stage_models(clean)
+    stage_reduce(clean)
     stage_adjust(clean)
     print(f"Xong. Bảng ở {config.TABLE_DIR}")
     return 0
