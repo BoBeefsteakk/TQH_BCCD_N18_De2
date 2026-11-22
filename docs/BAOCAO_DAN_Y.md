@@ -63,8 +63,8 @@ Cấu trúc 7 chương theo đề. Cột "Khối liên quan" của bảng cấu 
 - Hình/bảng: Bảng 2.1 từ điển dữ liệu; Bảng 2.2 thống kê mô tả; Bảng 2.3 phân bố lớp.
 
 ## Chương 3. Thiết kế sơ bộ (3 trang; mã 1.1, 0,5 điểm dùng chung với Chương 1)
-**Người viết: Việt** (chuyển từ Phi 19/11/2026, task T011; khung ở `docs/BAOCAO_NHAP_PHI.md`; Phi chốt quy trình).
-- 3.1 Quy trình phân tích: chọn **CRISP-DM, KDD hoặc SEMMA** và giải thích cách áp dụng vào đề (chưa chọn: `UNKNOWN`, nhóm chọn ở P1).
+**Người viết: Việt** (chuyển từ Phi 19/11/2026, task T011; khung ở `docs/BAOCAO_NHAP_PHI.md`; quy trình đã chốt là CRISP-DM).
+- 3.1 Quy trình phân tích: **CRISP-DM** (đã chốt 22/11/2026) và giải thích cách áp dụng vào đề: hiểu nghiệp vụ (Chương 1), hiểu dữ liệu (Chương 2, 4.1, hình khám phá), chuẩn bị dữ liệu (4.1), mô hình hóa (4.3 đến 4.5), đánh giá (Chương 5), triển khai (chỉ đề xuất, Chương 6).
 - 3.2 Kế hoạch tiền xử lý (kiểm chất lượng, làm sạch, mã hóa, chuẩn hóa, giảm chiều).
 - 3.3 Danh mục biểu đồ dự kiến (bảng: mã hình, loại, câu hỏi phục vụ).
 - 3.4 Thuật toán và độ đo sẽ dùng, kèm lý do: cây quyết định, k-NN, hồi quy logistic; hồi quy tuyến tính và cây; Apriori hoặc FP-growth; k-means; F1 macro, RMSE (xem `docs/CONVENTIONS.md` mục 6).

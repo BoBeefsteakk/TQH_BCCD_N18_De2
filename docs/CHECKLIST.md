@@ -5,7 +5,7 @@ Mã khớp mã chấm Rubric R3 của đề (tổng 10,0: nhóm 8,5, cá nhân 1
 ## P1 — hết tuần 1: lập nhóm, chọn đề, khảo sát dữ liệu (khối A)
 | Mã | Việc | Điểm | Người chính | |
 |---|---|---|---|---|
-| 1.1 | Bối cảnh, người dùng, ≥ 3 câu hỏi phân tích (Phi, Chương 1); chọn CRISP-DM/KDD/SEMMA và giải thích áp dụng (Việt viết Chương 3, Phi chốt) | 0,5 | Phi, Việt | ☐ |
+| 1.1 | Bối cảnh, người dùng, ≥ 3 câu hỏi phân tích (Phi, Chương 1); quy trình CRISP-DM đã chốt, giải thích áp dụng (Việt viết Chương 3) | 0,5 | Phi, Việt | ☐ |
 | — | Phiếu đăng ký (Phụ lục A), kế hoạch và rủi ro (Phụ lục B) vào `docs/PROJECT_RECORDS.md` | (6.1) | Phi | ☐ |
 | — | Tải dữ liệu, điền size và SHA-256 vào `src/config.py`, đối chiếu tên cột thật | — | Phi | ☐ |
 

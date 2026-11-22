@@ -2,7 +2,7 @@
 
 Gồm: Chương 1, mục 4.1, mục 4.4, mục 5.2, mục 5.3, Chương 7. Cuối tệp là khung Chương 3 và Chương 6 để Việt viết (T011, T012). Số liệu lấy từ `results/tables/` (tên bảng trong ngoặc vuông); sửa số thì chạy lại `python run_all.py` rồi đối chiếu. Chỗ `[…]` là việc của người khác hoặc chưa có. Nhãn **UNKNOWN** và **NOT VERIFIED** giữ nguyên đến khi có bằng chứng. Dấu phẩy thập phân trong văn bản.
 
-Còn chờ: [CHỜ PHI CHỐT] quy trình CRISP-DM, KDD hay SEMMA (bản này viết theo CRISP-DM); hình của Huấn (Chương 4.2); so sánh có và không giảm chiều (T010, Việt); số trang đo thật khi chép sang Docs.
+Đã chốt (22/11/2026): quy trình CRISP-DM. Còn chờ: hình của Huấn (Chương 4.2); so sánh có và không giảm chiều (T010, Việt); số trang đo thật khi chép sang Docs.
 
 ---
 
@@ -30,7 +30,7 @@ Các câu hỏi được trả lời bằng số liệu ở mục 5.3 và tổng
 
 ## 1.4 Hướng tiếp cận và quy trình phân tích
 
-Nhóm chọn quy trình CRISP-DM [CHỜ PHI CHỐT] vì đây là quy trình lặp, phù hợp với việc quay lại bước chuẩn bị dữ liệu khi phát hiện vấn đề. Điều này đã xảy ra thật trong đề tài: ở bước hiểu dữ liệu, nhóm phát hiện CO2 gần như là hàm của `Usage_kWh` và `Usage_kWh` trùng một công thức vật lý của công suất phản kháng và hệ số công suất (mục 4.1), nên phải quay lại điều chỉnh tập đặc trưng. Cách ánh xạ từng pha của CRISP-DM vào các chương của báo cáo được trình bày ở Chương 3.
+Nhóm chọn quy trình CRISP-DM vì đây là quy trình lặp, phù hợp với việc quay lại bước chuẩn bị dữ liệu khi phát hiện vấn đề. Điều này đã xảy ra thật trong đề tài: ở bước hiểu dữ liệu, nhóm phát hiện CO2 gần như là hàm của `Usage_kWh` và `Usage_kWh` trùng một công thức vật lý của công suất phản kháng và hệ số công suất (mục 4.1), nên phải quay lại điều chỉnh tập đặc trưng. Cách ánh xạ từng pha của CRISP-DM vào các chương của báo cáo được trình bày ở Chương 3.
 
 Việc chọn mô hình gắn với bản chất của bài toán. Nhãn `Load_Type` có ba lớp rời rạc nên nhóm dùng ba mô hình phân lớp thuộc ba họ khác nhau: cây quyết định (diễn giải được bằng luật nếu–thì), k láng giềng gần nhất (dựa trên khoảng cách giữa các mẫu) và hồi quy logistic (mô hình tuyến tính làm mốc so sánh). Điện năng `Usage_kWh` là đại lượng liên tục nên nhóm dùng hồi quy tuyến tính (mốc) và cây hồi quy (bắt quan hệ phi tuyến). Vì dữ liệu là chuỗi thời gian với các mẫu liền kề rất giống nhau, nhóm chia tập huấn luyện và kiểm tra theo thời gian thay vì ngẫu nhiên để tránh điểm số cao giả (mục 3.5).
 
@@ -299,10 +299,10 @@ Bảng tự đánh giá đóng góp (Phụ lục C) do từng thành viên đi�
 Dưới đây là khung Chương 3 (T011) và Chương 6 (T012) do Phi soạn trước để Việt viết lại bằng lời của mình. Số trong Chương 6 đã đối chiếu với bản mới nhất ở trên.
 
 ## Chương 3. Thiết kế sơ bộ (khung cho T011)
-> Từ 19/11/2026 Việt viết Chương 3 (T011) dựa trên khung này; Phi chốt phần quy trình ở 3.1.
+> Từ 19/11/2026 Việt viết Chương 3 (T011) dựa trên khung này; Quy trình đã chốt là CRISP-DM (22/11/2026).
 
 ### 3.1 Quy trình phân tích: CRISP-DM
-> Đề xuất của bản nháp, chờ Phi chốt (đề cho chọn CRISP-DM, KDD hoặc SEMMA; chưa có quyết định ghi ở `docs/decisions/`).
+> Đã chốt: CRISP-DM (Phi, 22/11/2026; ghi ở `docs/decisions/README.md`). Không đổi sang KDD hay SEMMA.
 
 Hiểu nghiệp vụ → hiểu dữ liệu → chuẩn bị dữ liệu → mô hình hóa → đánh giá → triển khai. Ánh xạ vào đề: hiểu nghiệp vụ là Chương 1; hiểu dữ liệu là Chương 2 và các hình khám phá (4.2); chuẩn bị dữ liệu là 4.1; mô hình hóa là 4.3 đến 4.5; đánh giá là Chương 5. Triển khai chỉ ở mức đề xuất (Chương 6) vì đề không yêu cầu đưa vào vận hành. Chọn CRISP-DM vì quy trình lặp, phù hợp việc quay lại sửa dữ liệu khi phát hiện rò rỉ (xem 4.1).
 
