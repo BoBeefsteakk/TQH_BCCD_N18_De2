@@ -131,5 +131,7 @@ LAG_WINDOW = 4  # 4 mốc 15 phút = 1 giờ gần nhất
 LAG_COLS = ["Lagging_Current_Reactive.Power_kVarh", "Leading_Current_Reactive_Power_kVarh",
             "Lagging_Current_Power_Factor", "Leading_Current_Power_Factor"]
 TBL_CLS_ADJUST = "g_09_thu_dieu_chinh_phan_lop.csv"
+TBL_CLASS_BY_HOURBIN = "b_06_ti_le_lop_theo_khung_gio.csv"  # trả lời câu hỏi 1: tỉ lệ ba lớp theo khung giờ
+TBL_CLASS_BY_DAY = "b_07_ti_le_lop_theo_thu.csv"  # trả lời câu hỏi 1: tỉ lệ ba lớp theo thứ trong tuần
 TBL_PCA_VARIANCE = "b_04_pca_phuong_sai.csv"  # T006: phương sai giải thích từng thành phần chính
 TBL_FEATURE_RANK = "b_05_xep_hang_thuoc_tinh.csv"  # T006: xếp hạng thông tin tương hỗ với Load_Type và Usage_kWh

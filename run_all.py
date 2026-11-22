@@ -24,6 +24,8 @@ def stage_b() -> pd.DataFrame:
     _save(data_prep.quality_report(clean), config.TBL_QUALITY_AFTER)
     data_prep.save_clean(clean)
     _save(_leakage_table(clean), config.TBL_LEAKAGE)
+    _save(data_prep.class_share(clean, "hourbin"), config.TBL_CLASS_BY_HOURBIN)
+    _save(data_prep.class_share(clean, "Day_of_week"), config.TBL_CLASS_BY_DAY)
     return clean
 
 
