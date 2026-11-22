@@ -107,3 +107,11 @@ def test_lag_features_look_backward_only():
     assert out[f"{col}_tb{config.LAG_WINDOW}"].iloc[0] == out[col].iloc[0]
     assert out[f"{col}_hieu1"].iloc[5] == pytest.approx(out[col].iloc[5] - out[col].iloc[4])
     assert len(data_prep.lag_feature_names()) == 2 * len(config.LAG_COLS)
+
+
+def test_hour_not_used_as_feature_but_kept_in_data():
+    out = data_prep.clean(_fake())
+    train, test = data_prep.time_split(out)
+    assert "hour" in out.columns
+    for task in ("cls", "reg", "reg_no_physics"):
+        assert "hour" not in data_prep.make_features(train, test, task)[0].columns

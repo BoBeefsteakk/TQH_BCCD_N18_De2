@@ -98,7 +98,9 @@ def feature_columns(task: str) -> list[str]:
     if task == "reg_no_physics":
         banned |= set(config.REG_NO_PHYSICS_COLS)
     # Không dùng tháng: tập kiểm tra (cuối năm) có tháng chưa từng thấy ở train nên mô hình chỉ ngoại suy.
-    cols = config.FEATURE_COLS_NUMERIC + [HOUR_COL] + config.FEATURE_COLS_CATEGORICAL
+    # Không dùng cột giờ: hour = NSM // 3600 chính xác, trùng thông tin với NSM (thang giây mịn hơn). Giữ cột hour
+    # trong dữ liệu sạch cho biểu đồ và luật kết hợp. Bỏ hour đổi F1 macro tối đa 0,002 (quyết định 22/11/2026).
+    cols = config.FEATURE_COLS_NUMERIC + config.FEATURE_COLS_CATEGORICAL
     return [c for c in cols if c not in banned]
 
 
